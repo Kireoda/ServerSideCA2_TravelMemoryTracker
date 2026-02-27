@@ -1,0 +1,17 @@
+CA2 Server-Side Development – MVC Laravel Project
+
+Plan and build a dynamic web application using Laravel and the MVC structure. The project should reflect a realistic idea with clear user needs and good design. You must understand and explain your project in an oral interview. AI tools are allowed, but you are responsible for the code.
+
+What to Submit
+
+Planning & UX (PDF) Project idea and problem Two user personas User flows or task journeys Basic wireframes Clear project scope (what is included and not included)
+
+Laravel Application MVC structure At least one CRUD feature Relational database with migrations User login and permissions Client-side and server-side validation At least 5 pages/views
+
+Git Repository Regular commits Clear commit messages Use of branches if needed
+
+README Project description Setup instructions Features Limitations or issues
+
+Oral Interview You must explain: Project planning UX decisions and personas CRUD features and code Git usage Problems and solutions
+
+Marking Planning & scope – 20% UX design – 20% Technical work – 25% Git usage – 15% Oral interview – 20%
