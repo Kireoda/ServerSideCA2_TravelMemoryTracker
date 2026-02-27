@@ -33,12 +33,46 @@ Examples may include:
 ### Trip History
 Users can browse and view all of their past trips in one place.
 
-### Possible Extra Feature (If Time Allows)
+### Possible Extra Features
 A yearly summary feature that shows a simple overview such as:
 - Number of trips taken
 - Locations visited
 - Total memories added
 
+Cover Photo for Trips
+- Each trip has a main image.
+- Shows on the dashboard trip list.
+- Makes the app look much more polished.
+- Simple to implement and looks great in a portfolio.
+
+Trip Status (Planned / Ongoing / Finished)
+- Planned → future trip
+- Ongoing → currently travelling
+- Finished → enables Memory Story
+
+Favourite Memories
+- Users can mark memories as favourites.
+- Favourites appear first on the Memory Story page.
+
+Trip Statistics
+Example shown on Trip Details:
+- Number of memories
+- Locations visited
+- Trip duration
+
+Simple Map Link
+Instead of building a map:
+- Store location name
+- Button: "View on Google Maps"
+- Just opens Google Maps search.
+
+Tags or Categories for Memories
+Example:
+- Food
+- Sightseeing
+- Nature
+- Activities
+Helps organise memories.
 This would act like a small "memory recap" similar to Spotify Wrapped.
 
 ## Technical Details
