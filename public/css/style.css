@@ -1,0 +1,204 @@
+/* Base */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: #f2f7fb;
+    color: #2d3436;
+}
+
+/* Header */
+header {
+    background: #0a3d62;
+    color: white;
+    padding: 18px 24px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+nav {
+    margin-top: 8px;
+}
+
+nav a {
+    color: #dff6ff;
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #74c0fc;
+}
+
+/* Layout */
+main {
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Page header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Card */
+section {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    text-align: left;
+    padding: 12px;
+    background: #eef6fb;
+    font-weight: 600;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e6f0f7;
+}
+
+/* Buttons */
+button,
+.button {
+    background: #0984e3;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background: #0873c4;
+}
+
+/* Secondary button */
+.button.secondary {
+    background: #74b9ff;
+}
+
+.button.secondary:hover {
+    background: #4a90e2;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #dbe9f4;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+/* Form row */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Links */
+a {
+    color: #0984e3;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+button,
+.button {
+    background: linear-gradient(135deg, #0984e3, #00a8ff);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 8px rgba(9,132,227,0.2);
+}
+
+button:hover,
+.button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(9,132,227,0.25);
+}
+
+button:active,
+.button:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 6px rgba(9,132,227,0.2);
+}
+
+/* Secondary buttons */
+.button.secondary {
+    background: #f1f6fb;
+    color: #0984e3;
+    box-shadow: none;
+}
+
+.button.secondary:hover {
+    background: #e3f2fd;
+}
+
+/* Inline links */
+a {
+    color: #0984e3;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.15s ease;
+}
+
+a:hover {
+    color: #0652dd;
+}
+
+/* Small action links (edit/delete etc.) */
+td a {
+    margin-right: 10px;
+}

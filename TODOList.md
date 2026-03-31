@@ -3,15 +3,15 @@
 ---
 
 # 1. Project Setup
-- [ ] Configure database in `.env`
-- [ ] Run default Laravel migrations
-- [ ] Confirm project runs in browser
+- [x] Configure database in `.env`
+- [x] Run default Laravel migrations
+- [x] Confirm project runs in browser
 - [x] Laravel project created
 
 ---
 
 # 2. Trip Model
-- [ ] Create `Trip.php`
+- [x] Create `Trip.php`
 - [ ] Add fillable fields
 - [ ] Trip belongs to User
 - [ ] Trip has many Memories
@@ -19,76 +19,76 @@
 ---
 
 # 3. Trip Migration
-- [ ] Create trips migration
-- [ ] Add columns
-- [ ] Add foreign key constraint
-- [ ] Run migration
+- [x] Create trips migration
+- [x] Add columns
+- [x] Add foreign key constraint
+- [x] Run migration
 
 ---
 
 # 4. Memory Model
-- [ ] Create `Memory.php`
+- [x] Create `Memory.php`
 - [ ] Add fillable fields
 - [ ] Memory belongs to Trip
 
 ---
 
 # 5. Memory Migration
-- [ ] Create memories migration
-- [ ] Add columns
-- [ ] Add foreign key constraint
+- [x] Create memories migration
+- [x] Add columns
+- [x] Add foreign key constraint
 
 ---
 
 # 6. Trip Controller (CRUD)
-- [ ] Create `TripController.php`
-- [ ] index()
-- [ ] create()
-- [ ] store()
-- [ ] show()
-- [ ] edit()
-- [ ] update()
-- [ ] destroy()
+- [x] Create `TripController.php`
+- [x] index()
+- [x] create()
+- [x] store()
+- [x] show()
+- [x] edit()
+- [x] update()
+- [x] destroy()
 
 ---
 
 # 7. Memory Controller
-- [ ] Create `MemoryController.php`
-- [ ] create()
-- [ ] store()
-- [ ] edit()
-- [ ] update()
-- [ ] destroy()
+- [x] Create `MemoryController.php`
+- [x] create()
+- [x] store()
+- [x] edit()
+- [x] update()
+- [x] destroy()
 
 ---
 
 # 8. Routes
 - [ ] Dashboard route
-- [ ] Trip routes
-- [ ] Memory routes
+- [x] Trip routes
+- [x] Memory routes
 - [ ] Apply auth middleware
 - [x] `web.php` exists
 
 ---
 
 # 9. Views
-- [ ] layouts/app.blade.php
-- [ ] dashboard.blade.php
-- [ ] trips/create.blade.php
-- [ ] trips/edit.blade.php
-- [ ] trips/show.blade.php
+- [x] layouts/app.blade.php
+- [x] dashboard.blade.php
+- [x] trips/create.blade.php
+- [x] trips/edit.blade.php
+- [x] trips/show.blade.php
 - [ ] memories/create.blade.php
 - [x] views folder exists
 
 ---
 
 # 10. Trip Form
-- [ ] Title input
-- [ ] Location input
-- [ ] Start date
-- [ ] End date
-- [ ] Description textarea
-- [ ] Submit button
+- [x] Title input
+- [x] Location input
+- [x] Start date
+- [x] End date
+- [x] Description textarea
+- [x] Submit button
 
 ---
 
@@ -149,17 +149,17 @@
 # 17. Relational Database
 - [ ] Trips linked to users
 - [ ] Memories linked to trips
-- [ ] Foreign keys enforced
-- [ ] Use migrations only
+- [x] Foreign keys enforced
+- [x] Use migrations only
 
 ---
 
 # 18. MVC Structure
 - [x] Laravel MVC folders exist
-- [ ] Models handle database
-- [ ] Controllers handle logic
-- [ ] Views contain no DB queries
-- [ ] Routes point to controllers
+- [x] Models handle database
+- [x] Controllers handle logic
+- [x] Views contain no DB queries
+- [x] Routes point to controllers
 
 ---
 
@@ -167,8 +167,8 @@
 - [ ] Login page
 - [ ] Register page
 - [ ] Dashboard page
-- [ ] Trip details page
-- [ ] Add trip page
+- [x] Trip details page
+- [x] Add trip page
 
 ---
 
@@ -203,12 +203,12 @@
 ---
 
 # 23. Core Requirements Checklist
-- [ ] Full CRUD feature (Trips)
+- [x] Full CRUD feature (Trips)
 - [ ] Relational database
 - [ ] Authentication
 - [ ] Authorisation
 - [ ] Validation
-- [ ] Multiple pages
+- [x] Multiple pages
 - [x] MVC structure started
 
 ---
