@@ -12,9 +12,9 @@
 
 # 2. Trip Model
 - [x] Create `Trip.php`
-- [ ] Add fillable fields
-- [ ] Trip belongs to User
-- [ ] Trip has many Memories
+- [x] Add fillable fields
+- [x] Trip belongs to User
+- [x] Trip has many Memories
 
 ---
 
@@ -28,8 +28,8 @@
 
 # 4. Memory Model
 - [x] Create `Memory.php`
-- [ ] Add fillable fields
-- [ ] Memory belongs to Trip
+- [x] Add fillable fields
+- [x] Memory belongs to Trip
 
 ---
 
@@ -63,7 +63,7 @@
 ---
 
 # 8. Routes
-- [ ] Dashboard route
+- [x] Dashboard route
 - [x] Trip routes
 - [x] Memory routes
 - [ ] Apply auth middleware
@@ -87,18 +87,20 @@
 - [x] Location input
 - [x] Start date
 - [x] End date
+- [ ] Image upload
 - [x] Description textarea
 - [x] Submit button
 
 ---
 
 # 11. Dashboard
-- [ ] List user trips
-- [ ] Show title
-- [ ] Show location
-- [ ] Show dates
-- [ ] Link to trip details
-- [ ] Add trip button
+- [x] List user trips
+- [x] Show title
+- [x] Show location
+- [x] Show dates
+- [x] Link to trip details
+- [x] Add trip button
+- [ ] Show Images
 
 ---
 
@@ -111,6 +113,7 @@
 - [ ] Add memory button
 - [ ] Edit trip button
 - [ ] Delete trip button
+- [ ] Show Images
 
 ---
 
@@ -147,8 +150,8 @@
 ---
 
 # 17. Relational Database
-- [ ] Trips linked to users
-- [ ] Memories linked to trips
+- [x] Trips linked to users
+- [x] Memories linked to trips
 - [x] Foreign keys enforced
 - [x] Use migrations only
 
@@ -183,7 +186,7 @@
 ---
 
 # 21. Git Requirements
-- [ ] Initial commit
+- [x] Initial commit
 - [ ] Commit per feature
 - [ ] Clear commit messages
 - [ ] Multiple commits
