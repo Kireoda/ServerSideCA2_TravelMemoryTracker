@@ -3,17 +3,22 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\MemoryController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return redirect('/trips');
 });
+Route::get('/dashboard', function () {
+    return redirect('/trips');
+})->name('dashboard');
+Route::middleware('auth')->group(function () {
 
-// Trip routes
-Route::get('/trips', [TripController::class, 'index']);
-Route::get('/trips/create', [TripController::class, 'create']);
-Route::post('/trips', [TripController::class, 'store']);
-Route::get('/trips/{trip}', [TripController::class, 'show']);
-Route::get('/trips/{trip}/edit', [TripController::class, 'edit']);
-Route::put('/trips/{trip}', [TripController::class, 'update']);
-Route::delete('/trips/{trip}', [TripController::class, 'destroy']);
-Route::resource('trips.memories', MemoryController::class);
+    Route::resource('trips', TripController::class);
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+});
+
+require __DIR__.'/auth.php';

@@ -10,7 +10,7 @@ class TripController extends Controller
     public function index()
     {
         $trips = Trip::latest()->get();
-        return view('trips.index', compact('trips'));
+        return view('dashboard', compact('trips'));
     }
 
     public function create()
@@ -20,7 +20,15 @@ class TripController extends Controller
 
     public function store(Request $request)
     {
-        Trip::create($request->all());
+        Trip::create([
+            'title' => $request->title,
+            'location' => $request->location,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'description' => $request->description,
+            'user_id' => auth()->id()
+        ]);
+
         return redirect('/trips');
     }
 
