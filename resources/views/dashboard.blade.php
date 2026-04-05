@@ -1,58 +1,17 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
-@section('title', 'Dashboard')
-
-@section('content')
-    <section class="dashboard">
-
-        <div class="page-header">
-            <div>
-                <h2>Dashboard</h2>
-                <p>Your travel memories at a glance</p>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    {{ __("You're logged in!") }}
+                </div>
             </div>
-
-            <a href="/trips/create" class="button">+ New Trip</a>
         </div>
-
-        @if($trips->isEmpty())
-            <div class="empty-state">
-                <h3>No trips yet</h3>
-                <p>Start by creating your first trip.</p>
-                <a href="/trips/create" class="button">Create Trip</a>
-            </div>
-        @else
-
-            <div class="trip-grid">
-                @foreach ($trips as $trip)
-                    <div class="trip-card">
-
-                        <div class="trip-card-header">
-                            <h3>{{ $trip->title }}</h3>
-                            <span class="trip-location">
-                            {{ $trip->location }}
-                        </span>
-                        </div>
-
-                        <div class="trip-dates">
-                            {{ $trip->start_date }}
-                            —
-                            {{ $trip->end_date ?? 'Ongoing' }}
-                        </div>
-
-                        <p class="trip-description">
-                            {{ Str::limit($trip->description, 100) }}
-                        </p>
-
-                        <div class="trip-actions">
-                            <a href="/trips/{{ $trip->id }}">View</a>
-                            <a href="/trips/{{ $trip->id }}/edit">Edit</a>
-                        </div>
-
-                    </div>
-                @endforeach
-            </div>
-
-        @endif
-
-    </section>
-@endsection
+    </div>
+</x-app-layout>
