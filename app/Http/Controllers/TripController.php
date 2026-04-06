@@ -9,7 +9,10 @@ class TripController extends Controller
 {
     public function index()
     {
-        $trips = Trip::where('user_id', auth()->id())->latest()->get();
+        $trips = Trip::where('user_id', auth()->id())
+            ->latest()
+            ->get();
+
         return view('trips.index', compact('trips'));
     }
 
@@ -21,73 +24,70 @@ class TripController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|max:255',
-            'location' => 'required|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
-            'description' => 'nullable|string',
+            'title' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date', 'after_or_equal:start_date'],
+            'description' => ['nullable', 'string'],
         ]);
 
         $validated['user_id'] = auth()->id();
 
         Trip::create($validated);
 
-        return redirect()->route('trips.index')->with('success', 'Trip created successfully.');
+        return redirect()
+            ->route('trips.index')
+            ->with('success', 'Trip created successfully.');
     }
 
-    public function show($id)
+    public function show(Trip $trip)
     {
-        $trip = Trip::findOrFail($id);
+        $this->authorizeTrip($trip);
 
-        if ($trip->user_id !== auth()->id()) {
-            abort(403);
-        }
+        $trip->load('memories');
 
         return view('trips.show', compact('trip'));
     }
 
-    public function edit($id)
+    public function edit(Trip $trip)
     {
-        $trip = Trip::findOrFail($id);
-
-        if ($trip->user_id !== auth()->id()) {
-            abort(403);
-        }
+        $this->authorizeTrip($trip);
 
         return view('trips.edit', compact('trip'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Trip $trip)
     {
-        $trip = Trip::findOrFail($id);
-
-        if ($trip->user_id !== auth()->id()) {
-            abort(403);
-        }
+        $this->authorizeTrip($trip);
 
         $validated = $request->validate([
-            'title' => 'required|max:255',
-            'location' => 'required|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
-            'description' => 'nullable|string',
+            'title' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'start_date' => ['required', 'date'],
+            'end_date' => ['required', 'date', 'after_or_equal:start_date'],
+            'description' => ['nullable', 'string'],
         ]);
 
         $trip->update($validated);
 
-        return redirect()->route('trips.index')->with('success', 'Trip updated successfully.');
+        return redirect()
+            ->route('trips.index')
+            ->with('success', 'Trip updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Trip $trip)
     {
-        $trip = Trip::findOrFail($id);
-
-        if ($trip->user_id !== auth()->id()) {
-            abort(403);
-        }
+        $this->authorizeTrip($trip);
 
         $trip->delete();
 
-        return redirect()->route('trips.index')->with('success', 'Trip deleted successfully.');
+        return redirect()
+            ->route('trips.index')
+            ->with('success', 'Trip deleted successfully.');
+    }
+
+    private function authorizeTrip(Trip $trip): void
+    {
+        abort_if($trip->user_id !== auth()->id(), 403);
     }
 }

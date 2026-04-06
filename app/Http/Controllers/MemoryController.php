@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Trip;
 use App\Models\Memory;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 
 class MemoryController extends Controller
 {
-    private function authorizeTrip(Trip $trip)
-    {
-        abort_if($trip->user_id !== auth()->id(), 403);
-    }
-
     public function index(Trip $trip)
     {
         $this->authorizeTrip($trip);
 
-        $memories = $trip->memories()->latest()->get();
+        $memories = $trip->memories()
+            ->latest()
+            ->get();
 
         return view('memories.index', compact('trip', 'memories'));
     }
@@ -34,22 +31,23 @@ class MemoryController extends Controller
         $this->authorizeTrip($trip);
 
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'location' => 'nullable|string|max:255',
-            'date' => 'nullable|date',
-            'description' => 'nullable|string',
+            'title' => ['required', 'string', 'max:255'],
+            'location' => ['nullable', 'string', 'max:255'],
+            'date' => ['nullable', 'date'],
+            'description' => ['nullable', 'string'],
         ]);
 
         $trip->memories()->create($validated);
 
-        return redirect()->route('trips.memories.index', $trip)
+        return redirect()
+            ->route('trips.memories.index', $trip)
             ->with('success', 'Memory created successfully.');
     }
 
     public function show(Trip $trip, Memory $memory)
     {
         $this->authorizeTrip($trip);
-        abort_if($memory->trip_id !== $trip->id, 404);
+        $this->authorizeMemory($trip, $memory);
 
         return view('memories.show', compact('trip', 'memory'));
     }
@@ -57,7 +55,7 @@ class MemoryController extends Controller
     public function edit(Trip $trip, Memory $memory)
     {
         $this->authorizeTrip($trip);
-        abort_if($memory->trip_id !== $trip->id, 404);
+        $this->authorizeMemory($trip, $memory);
 
         return view('memories.edit', compact('trip', 'memory'));
     }
@@ -65,29 +63,41 @@ class MemoryController extends Controller
     public function update(Request $request, Trip $trip, Memory $memory)
     {
         $this->authorizeTrip($trip);
-        abort_if($memory->trip_id !== $trip->id, 404);
+        $this->authorizeMemory($trip, $memory);
 
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'location' => 'nullable|string|max:255',
-            'date' => 'nullable|date',
-            'description' => 'nullable|string',
+            'title' => ['required', 'string', 'max:255'],
+            'location' => ['nullable', 'string', 'max:255'],
+            'date' => ['nullable', 'date'],
+            'description' => ['nullable', 'string'],
         ]);
 
         $memory->update($validated);
 
-        return redirect()->route('trips.memories.index', $trip)
+        return redirect()
+            ->route('trips.memories.index', $trip)
             ->with('success', 'Memory updated successfully.');
     }
 
     public function destroy(Trip $trip, Memory $memory)
     {
         $this->authorizeTrip($trip);
-        abort_if($memory->trip_id !== $trip->id, 404);
+        $this->authorizeMemory($trip, $memory);
 
         $memory->delete();
 
-        return redirect()->route('trips.memories.index', $trip)
+        return redirect()
+            ->route('trips.memories.index', $trip)
             ->with('success', 'Memory deleted successfully.');
+    }
+
+    private function authorizeTrip(Trip $trip): void
+    {
+        abort_if($trip->user_id !== auth()->id(), 403);
+    }
+
+    private function authorizeMemory(Trip $trip, Memory $memory): void
+    {
+        abort_if($memory->trip_id !== $trip->id, 404);
     }
 }
