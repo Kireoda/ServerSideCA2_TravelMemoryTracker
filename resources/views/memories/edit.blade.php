@@ -1,32 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Edit Memory</h1>
+    <section class="page">
+        <header class="page-header">
+            <h2>Edit Memory</h2>
+            <a href="{{ route('trips.memories.index', $trip) }}" class="button button-secondary">Back</a>
+        </header>
 
-    <form action="{{ route('trips.memories.update', [$trip, $memory]) }}" method="POST">
-        @csrf
-        @method('PUT')
-
-        <div>
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" value="{{ old('title', $memory->title) }}">
+        <div class="form-card">
+            <form action="{{ route('trips.memories.update', [$trip, $memory]) }}" method="POST">
+                @include('memories._form', ['memory' => $memory])
+            </form>
         </div>
-
-        <div>
-            <label for="location">Location</label>
-            <input type="text" name="location" id="location" value="{{ old('location', $memory->location) }}">
-        </div>
-
-        <div>
-            <label for="date">Date</label>
-            <input type="date" name="date" id="date" value="{{ old('date', $memory->date) }}">
-        </div>
-
-        <div>
-            <label for="description">Description</label>
-            <textarea name="description" id="description">{{ old('description', $memory->description) }}</textarea>
-        </div>
-
-        <button type="submit">Update Memory</button>
-    </form>
+    </section>
 @endsection

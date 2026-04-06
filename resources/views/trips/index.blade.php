@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <section>
-        <header>
+    <section class="page">
+        <header class="page-header">
             <h2>Your Trips</h2>
-            <a href="{{ route('trips.create') }}">Create New Trip</a>
+            <a href="{{ route('trips.create') }}" class="button">Create New Trip</a>
         </header>
 
         @if(session('success'))
-            <p>{{ session('success') }}</p>
+            <div class="flash-success">
+                {{ session('success') }}
+            </div>
         @endif
 
-        @if($trips->isEmpty())
-            <p>No trips created yet.</p>
-        @else
-            <table>
+        @if($trips->count())
+            <table class="trip-table">
                 <thead>
                 <tr>
                     <th>Title</th>
@@ -24,27 +24,32 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($trips as $trip)
+                @foreach($trips as $trip)
                     <tr>
                         <td>{{ $trip->title }}</td>
                         <td>{{ $trip->location }}</td>
                         <td>
-                            {{ $trip->start_date }} - {{ $trip->end_date ?? 'Ongoing' }}
+                            {{ $trip->start_date }}<br>
+                            <span style="color:#6b7280;">to {{ $trip->end_date ?? 'Ongoing' }}</span>
                         </td>
                         <td>
-                            <a href="{{ route('trips.show', $trip->id) }}">View</a>
-                            <a href="{{ route('trips.edit', $trip->id) }}">Edit</a>
+                            <div class="trip-actions-inline">
+                                <a href="{{ route('trips.show', $trip) }}" class="button">View</a>
+                                <a href="{{ route('trips.edit', $trip) }}" class="button button-secondary">Edit</a>
 
-                            <form method="POST" action="{{ route('trips.destroy', $trip->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Delete</button>
-                            </form>
+                                <form method="POST" action="{{ route('trips.destroy', $trip) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="button button-danger">Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+        @else
+            <p>No trips created yet.</p>
         @endif
     </section>
 @endsection

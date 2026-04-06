@@ -4,7 +4,7 @@
     <section class="page">
         <header class="page-header">
             <h2>{{ $trip->title }}</h2>
-            <a href="{{ route('trips.index') }}" class="button">Back to Trips</a>
+            <a href="{{ route('trips.index') }}" class="button button-secondary">Back to Trips</a>
         </header>
 
         <article class="trip-details">
@@ -17,17 +17,17 @@
 
         <section class="trip-memories">
             <h3>Memories</h3>
-            <a href="{{ route('trips.memories.index', $trip) }}">View Memories</a>
-            <a href="{{ route('trips.memories.create', $trip) }}">Add Memory</a>
+            <a href="{{ route('trips.memories.index', $trip) }}" class="button">View Memories</a>
+            <a href="{{ route('trips.memories.create', $trip) }}" class="button">Add Memory</a>
         </section>
 
         <section class="trip-actions">
-            <a href="{{ route('trips.edit', $trip->id) }}">Edit Trip</a>
+            <a href="{{ route('trips.edit', $trip) }}" class="button button-secondary">Edit Trip</a>
 
-            <form method="POST" action="{{ route('trips.destroy', $trip->id) }}">
+            <form method="POST" action="{{ route('trips.destroy', $trip) }}" style="display:inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit">Delete Trip</button>
+                <button type="submit" class="button button-danger">Delete Trip</button>
             </form>
         </section>
     </section>
