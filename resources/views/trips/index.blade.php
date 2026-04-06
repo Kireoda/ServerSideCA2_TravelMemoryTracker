@@ -4,8 +4,12 @@
     <section>
         <header>
             <h2>Your Trips</h2>
-            <a href="/trips/create">Create New Trip</a>
+            <a href="{{ route('trips.create') }}">Create New Trip</a>
         </header>
+
+        @if(session('success'))
+            <p>{{ session('success') }}</p>
+        @endif
 
         @if($trips->isEmpty())
             <p>No trips created yet.</p>
@@ -25,15 +29,13 @@
                         <td>{{ $trip->title }}</td>
                         <td>{{ $trip->location }}</td>
                         <td>
-                            {{ $trip->start_date }}
-                            -
-                            {{ $trip->end_date ?? 'Ongoing' }}
+                            {{ $trip->start_date }} - {{ $trip->end_date ?? 'Ongoing' }}
                         </td>
                         <td>
-                            <a href="/trips/{{ $trip->id }}">View</a>
-                            <a href="/trips/{{ $trip->id }}/edit">Edit</a>
+                            <a href="{{ route('trips.show', $trip->id) }}">View</a>
+                            <a href="{{ route('trips.edit', $trip->id) }}">Edit</a>
 
-                            <form method="POST" action="/trips/{{ $trip->id }}">
+                            <form method="POST" action="{{ route('trips.destroy', $trip->id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Delete</button>

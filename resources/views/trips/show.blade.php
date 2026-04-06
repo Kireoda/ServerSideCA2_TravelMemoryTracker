@@ -1,23 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <section>
-        <header>
+    <section class="page">
+        <header class="page-header">
             <h2>{{ $trip->title }}</h2>
+            <a href="{{ route('trips.index') }}" class="button">Back to Trips</a>
         </header>
 
-        <article>
+        <article class="trip-details">
             <p><strong>Location:</strong> {{ $trip->location }}</p>
             <p><strong>Start Date:</strong> {{ $trip->start_date }}</p>
             <p><strong>End Date:</strong> {{ $trip->end_date ?? 'Ongoing' }}</p>
             <p><strong>Description:</strong></p>
-            <p>{{ $trip->description }}</p>
+            <p>{{ $trip->description ?: 'No description added.' }}</p>
         </article>
 
-        <section>
-            <a href="/trips/{{ $trip->id }}/edit">Edit Trip</a>
+        <section class="trip-actions">
+            <a href="{{ route('trips.edit', $trip->id) }}">Edit Trip</a>
 
-            <form method="POST" action="/trips/{{ $trip->id }}">
+            <form method="POST" action="{{ route('trips.destroy', $trip->id) }}">
                 @csrf
                 @method('DELETE')
                 <button type="submit">Delete Trip</button>

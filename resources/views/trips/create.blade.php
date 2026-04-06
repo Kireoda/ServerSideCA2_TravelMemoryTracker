@@ -4,10 +4,10 @@
     <section class="page">
         <header class="page-header">
             <h2>Create New Trip</h2>
-            <a href="/trips" class="button">Back to Trips</a>
+            <a href="{{ route('trips.index') }}" class="button">Back to Trips</a>
         </header>
 
-        <form method="POST" action="/trips" class="form">
+        <form method="POST" action="{{ route('trips.store') }}" class="form">
             @csrf
 
             <div class="form-group">
@@ -16,9 +16,13 @@
                         type="text"
                         id="title"
                         name="title"
+                        value="{{ old('title') }}"
                         placeholder="e.g. Summer in Spain"
                         required
                 >
+                @error('title')
+                <p>{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -27,9 +31,13 @@
                         type="text"
                         id="location"
                         name="location"
+                        value="{{ old('location') }}"
                         placeholder="e.g. Barcelona"
                         required
                 >
+                @error('location')
+                <p>{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="form-row">
@@ -39,8 +47,12 @@
                             type="date"
                             id="start_date"
                             name="start_date"
+                            value="{{ old('start_date') }}"
                             required
                     >
+                    @error('start_date')
+                    <p>{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group">
@@ -49,7 +61,11 @@
                             type="date"
                             id="end_date"
                             name="end_date"
+                            value="{{ old('end_date') }}"
                     >
+                    @error('end_date')
+                    <p>{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -59,12 +75,15 @@
                         id="description"
                         name="description"
                         placeholder="Write about your trip..."
-                ></textarea>
+                >{{ old('description') }}</textarea>
+                @error('description')
+                <p>{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="form-actions">
                 <button type="submit">Create Trip</button>
-                <a href="/trips" class="button">Cancel</a>
+                <a href="{{ route('trips.index') }}" class="button">Cancel</a>
             </div>
         </form>
     </section>
