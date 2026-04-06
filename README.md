@@ -1,107 +1,223 @@
 # Travel Memory Tracker
 
-## Project Overview
+## 📌 Project Overview
 
-Travel Memory Tracker is a web application that allows users to save and organise memories from their trips and holidays. Users can create trips and add memories with locations, notes, dates, and photos. The system keeps travel memories in one organised place and makes them easy to revisit.
+Travel Memory Tracker is a Laravel-based web application that allows users to create, organise, and revisit memories from their trips and holidays.
 
-Each user has their own account where they can manage their trips and view past experiences. The application is designed to be simple and easy to use while still feeling like a real product.
+The application solves the common problem of travel memories being scattered across different platforms (photos, notes, apps) by providing a **single structured system** where users can:
+- Create trips
+- Add memories within those trips
+- View and manage everything in one place
 
-The system will also include a memory story feature inspired by apps like Google Photos and Spotify Wrapped. After a trip is finished, the system will generate a small memory page that combines photos and notes into a simple trip summary, allowing users to look back on their holidays in a more engaging way.
+This project was developed as part of the **Server-Side Development (CA2)** module and follows a **Model–View–Controller (MVC)** architecture using Laravel.
 
-## Main Features
+---
 
-### User Accounts
-Users can register and log in to their own accounts. Each user can only see and manage their own trips and memories.
+## 🎯 Purpose
 
-### Trips (Main CRUD Feature)
-Users can create, view, edit, and delete trips. Each trip will include basic details such as title, location, dates, and description. Trips act as the main way memories are organised.
+The goal of this project is to:
+- Build a realistic full-stack Laravel application
+- Apply MVC principles in a real-world scenario
+- Demonstrate CRUD functionality with relational data
+- Focus on usability and user-centred design
 
-### Memories
-Users can add memories within each trip. A memory can include a location, date, short description, and images. This allows trips to be broken into smaller moments.
+---
 
-### Memory Story Page
-When a trip is marked as finished, the system generates a memory story page. This page combines photos and notes into a simple trip summary similar to a small digital memory book.
+## 👤 Target Users
 
-Examples may include:
-- Trip title and dates
-- Locations visited
-- Photos from the trip
-- Memory notes
-- Number of memories added
-- Small quotes to match the trip theme
+The application is designed based on two user personas:
 
-### Trip History
-Users can browse and view all of their past trips in one place.
+### Primary User – Sarah (Frequent Traveller)
+- Wants to organise detailed travel memories
+- Takes photos and notes regularly
+- Values clean, structured design
 
-### Possible Extra Features
-A yearly summary feature that shows a simple overview such as:
-- Number of trips taken
-- Locations visited
-- Total memories added
+### Secondary User – Mark (Casual Traveller)
+- Wants a simple and quick way to track trips
+- Prefers minimal interaction and simplicity
 
-Cover Photo for Trips
-- Each trip has a main image.
-- Shows on the dashboard trip list.
-- Makes the app look much more polished.
-- Simple to implement and looks great in a portfolio.
+These personas guided the UI and feature decisions.
 
-Trip Status (Planned / Ongoing / Finished)
-- Planned → future trip
-- Ongoing → currently travelling
-- Finished → enables Memory Story
+---
 
-Favourite Memories
-- Users can mark memories as favourites.
-- Favourites appear first on the Memory Story page.
+## 🚀 Features
 
-Trip Statistics
-Example shown on Trip Details:
-- Number of memories
-- Locations visited
-- Trip duration
+### 🔐 User Authentication
+- Register, login, logout
+- Each user has their own data
+- Authorisation ensures users only access their own trips
 
-Simple Map Link
-Instead of building a map:
-- Store location name
-- Button: "View on Google Maps"
-- Just opens Google Maps search.
+### 🧳 Trips (Main CRUD Feature)
+- Create, view, edit, and delete trips
+- Fields include:
+  - Title
+  - Location
+  - Start & End dates
+  - Description
 
-Tags or Categories for Memories
-Example:
-- Food
-- Sightseeing
-- Nature
-- Activities
-Helps organise memories.
-This would act like a small "memory recap" similar to Spotify Wrapped.
+### 📍 Memories (Nested CRUD)
+- Add memories inside a trip
+- Each memory includes:
+  - Title
+  - Location
+  - Date
+  - Description
+- Full CRUD support for memories
 
-## Technical Details
+### 📊 Dashboard
+- Displays all user trips
+- Quick access to create, edit, and view trips
 
-The application will be built using the Laravel framework following the Model–View–Controller (MVC) architecture.
+### ✅ Validation
+- Server-side validation using Laravel
+- Error messages shown in forms
 
-The system will include:
+### 🔒 Authorisation
+- Users can only access their own trips and memories
+- Implemented using `auth()->id()` checks and guards
 
+---
+
+## 🧱 Technical Implementation
+
+### 🏗 Architecture
 - Laravel MVC structure
-- Relational database for storing trips and memories
-- Laravel migrations for database setup
-- User authentication
-- Authorisation so users only access their own data
-- Form validation on both client and server side
-- At least one fully implemented CRUD feature (Trips)
-- Multiple pages and views
+  - Models: `Trip`, `Memory`, `User`
+  - Controllers: `TripController`, `MemoryController`
+  - Views: Blade templates
 
-## Pages (Planned)
+### 🗄 Database
+- Relational database (SQLite/MySQL)
+- Migrations used for schema:
+  - users
+  - trips
+  - memories
 
-- Home Page
-- Login Page
-- Register Page
-- User Dashboard (Trip List)
-- Trip Details Page
-- Add Trip Page
-- Edit Trip Page
-- Add Memory Page
-- Memory Story Page
+### 🔗 Relationships
+- A **Trip has many Memories**
+- A **Memory belongs to a Trip**
 
-## Purpose
+### 🧾 CRUD Implementation
+- Full CRUD for Trips (main feature)
+- Additional CRUD for Memories (extended feature)
 
-The goal of this project is to create a realistic travel memory application where users can store and revisit trips in a structured and meaningful way. The project focuses on usability, organisation of information, and creating a simple but engaging experience.
+---
+
+## 🖥 Pages Included
+
+- Login / Register
+- Dashboard (Trip list)
+- Create Trip
+- Edit Trip
+- Trip Details
+- Memory List
+- Create Memory
+- Edit Memory
+
+---
+
+## 🛠 Setup Instructions
+
+### 1. Clone the Repository
+```bash
+git clone <your-repo-url>
+cd travel-memory-tracker
+```
+
+### 2. Install Dependencies
+```bash
+composer install
+npm install
+```
+
+### 3. Environment Setup
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 4. Database Setup
+```bash
+php artisan migrate
+```
+
+### 5. Run the Application
+```bash
+php artisan serve
+npm run dev
+```
+
+Visit: http://127.0.0.1:8000
+
+---
+
+## ⚠️ Assumptions
+
+- Each user manages only their own trips
+- Trips must have valid dates
+- Memories are always linked to a trip
+
+---
+
+## ❗ Limitations / Known Issues
+
+- No image upload for memories (text-only)
+- Memory Story feature planned but not implemented
+- UI partially uses Tailwind (navigation) and custom CSS (main pages)
+
+---
+
+## 📌 Future Improvements
+
+- Memory Story / Trip Summary page
+- Image upload for memories
+- Trip status (Planned / Ongoing / Finished)
+- Favourite memories
+- Trip statistics (memory count, duration)
+- Google Maps integration for locations
+
+---
+
+## 🔄 Version Control
+
+- Git used throughout development
+- Regular commits with meaningful messages
+- Demonstrates incremental feature development
+
+---
+
+## 🤖 Use of AI Tools
+
+AI tools were used during development to:
+- Debug errors
+- Assist with structuring controllers and views
+- Improve UI styling
+
+All code was reviewed, understood, and adapted where necessary.
+
+---
+
+## 🧪 Testing
+
+Manual testing was carried out to ensure:
+- CRUD operations function correctly
+- Validation rules are enforced
+- Authorisation prevents unauthorised access
+
+---
+
+## 🎤 Oral Defence Preparation
+
+During the project defence, the following areas can be explained:
+- MVC structure and separation of concerns
+- CRUD implementation for Trips and Memories
+- Database relationships
+- Validation and security decisions
+- UX decisions based on user personas
+
+---
+
+## 📄 License
+
+This project is developed for educational purposes as part of a university assignment.
+
