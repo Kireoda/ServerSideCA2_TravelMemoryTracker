@@ -15,6 +15,12 @@
             <p>{{ $trip->description ?: 'No description added.' }}</p>
         </article>
 
+        <section class="trip-memories">
+            <h3>Memories</h3>
+            <a href="{{ route('trips.memories.index', $trip) }}">View Memories</a>
+            <a href="{{ route('trips.memories.create', $trip) }}">Add Memory</a>
+        </section>
+
         <section class="trip-actions">
             <a href="{{ route('trips.edit', $trip->id) }}">Edit Trip</a>
 

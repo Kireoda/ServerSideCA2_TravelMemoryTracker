@@ -11,7 +11,7 @@ class Memory extends Model
         'title',
         'location',
         'date',
-        'description'
+        'description',
     ];
 
     public function trip()
