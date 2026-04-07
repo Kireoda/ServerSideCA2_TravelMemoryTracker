@@ -30,6 +30,11 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
+            @if (Route::has('register'))
+                <a class="button button-secondary" href="{{ route('register') }}">
+                    {{ __('Create account') }}
+                </a>
+            @endif
 
             <x-primary-button>
                 {{ __('Log in') }}

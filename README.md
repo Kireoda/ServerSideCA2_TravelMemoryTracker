@@ -157,7 +157,7 @@ Frontend assets are prebuilt and stored in `public/build`, so no Node/Vite step 
 
 ### 2. Run migrations:
 ```bash
-   php artisan migrate
+   php artisan migrate 
 ```
 ### 3. (Optional) Seed database:
 ```bash
