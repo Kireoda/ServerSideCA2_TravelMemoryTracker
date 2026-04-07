@@ -1,12 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{ $memory->title }}</h1>
+    <section class="page">
+        <header class="detail-hero">
+            <div class="detail-hero-media">
+                <span class="card-chip">Memory</span>
+            </div>
+            <div class="detail-hero-body">
+                <p class="eyebrow">{{ $trip->title }}</p>
+                <h2>{{ $memory->title }}</h2>
+                <p class="detail-location">{{ $memory->location ?: 'No location set' }}</p>
+                <p class="detail-dates">{{ $memory->date ?: 'No date yet' }}</p>
+                <div class="detail-actions">
+                    <a href="{{ route('trips.memories.index', $trip) }}" class="button button-secondary">Back to Memories</a>
+                    <a href="{{ route('trips.memories.edit', [$trip, $memory]) }}" class="button">Edit Memory</a>
+                </div>
+            </div>
+        </header>
 
-    <p><strong>Location:</strong> {{ $memory->location }}</p>
-    <p><strong>Date:</strong> {{ $memory->date }}</p>
-    <p><strong>Description:</strong> {{ $memory->description }}</p>
-
-    <a href="{{ route('trips.memories.edit', [$trip, $memory]) }}">Edit</a>
-    <a href="{{ route('trips.memories.index', $trip) }}">Back</a>
+        <article class="detail-panel">
+            <h3>Description</h3>
+            <p>{{ $memory->description ?: 'No description provided yet.' }}</p>
+        </article>
+    </section>
 @endsection

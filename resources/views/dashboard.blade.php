@@ -1,17 +1,26 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
+@section('content')
+    <section class="page">
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">Welcome back</p>
+                <h2>{{ __('Dashboard') }}</h2>
             </div>
+            <a href="{{ route('trips.index') }}" class="button">View Trips</a>
+        </header>
+
+        <div class="dashboard-grid">
+            <article class="dashboard-card">
+                <h3>Your gallery</h3>
+                <p>{{ __("You're logged in!") }} Start curating your trips and memories.</p>
+                <a href="{{ route('trips.create') }}" class="button">Create New Trip</a>
+            </article>
+            <article class="dashboard-card">
+                <h3>Recent activity</h3>
+                <p>Jump back into your latest trips or add a new memory.</p>
+                <a href="{{ route('trips.index') }}" class="button button-secondary">Browse Trips</a>
+            </article>
         </div>
-    </div>
-</x-app-layout>
+    </section>
+@endsection

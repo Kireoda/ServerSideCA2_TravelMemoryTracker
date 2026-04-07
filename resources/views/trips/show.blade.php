@@ -2,33 +2,45 @@
 
 @section('content')
     <section class="page">
-        <header class="page-header">
-            <h2>{{ $trip->title }}</h2>
-            <a href="{{ route('trips.index') }}" class="button button-secondary">Back to Trips</a>
+        <header class="detail-hero">
+            <div class="detail-hero-media">
+                <span class="card-chip">Trip</span>
+            </div>
+            <div class="detail-hero-body">
+                <p class="eyebrow">Trip overview</p>
+                <h2>{{ $trip->title }}</h2>
+                <p class="detail-location">{{ $trip->location }}</p>
+                <p class="detail-dates">
+                    {{ $trip->start_date }}
+                    <span class="meta-divider">to</span>
+                    {{ $trip->end_date ?? 'Ongoing' }}
+                </p>
+                <div class="detail-actions">
+                    <a href="{{ route('trips.index') }}" class="button button-secondary">Back to Trips</a>
+                    <a href="{{ route('trips.edit', $trip) }}" class="button">Edit Trip</a>
+                    <form method="POST" action="{{ route('trips.destroy', $trip) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="button button-danger">Delete Trip</button>
+                    </form>
+                </div>
+            </div>
         </header>
 
-        <article class="trip-details">
-            <p><strong>Location:</strong> {{ $trip->location }}</p>
-            <p><strong>Start Date:</strong> {{ $trip->start_date }}</p>
-            <p><strong>End Date:</strong> {{ $trip->end_date ?? 'Ongoing' }}</p>
-            <p><strong>Description:</strong></p>
-            <p>{{ $trip->description ?: 'No description added.' }}</p>
+        <article class="detail-panel">
+            <h3>Description</h3>
+            <p>{{ $trip->description ?: 'No description added yet.' }}</p>
         </article>
 
-        <section class="trip-memories">
-            <h3>Memories</h3>
-            <a href="{{ route('trips.memories.index', $trip) }}" class="button">View Memories</a>
-            <a href="{{ route('trips.memories.create', $trip) }}" class="button">Add Memory</a>
-        </section>
-
-        <section class="trip-actions">
-            <a href="{{ route('trips.edit', $trip) }}" class="button button-secondary">Edit Trip</a>
-
-            <form method="POST" action="{{ route('trips.destroy', $trip) }}" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="button button-danger">Delete Trip</button>
-            </form>
+        <section class="detail-panel">
+            <div class="panel-header">
+                <h3>Memories</h3>
+                <span class="memory-count">{{ $trip->memories()->count() }} total</span>
+            </div>
+            <div class="panel-actions">
+                <a href="{{ route('trips.memories.index', $trip) }}" class="button">View Memories</a>
+                <a href="{{ route('trips.memories.create', $trip) }}" class="button button-secondary">Add Memory</a>
+            </div>
         </section>
     </section>
 @endsection

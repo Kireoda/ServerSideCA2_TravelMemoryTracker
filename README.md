@@ -116,41 +116,59 @@ These personas guided the UI and feature decisions.
 
 ---
 
-## 🛠 Setup Instructions
+## Setup Instructions
 
-### 1. Clone the Repository
+### 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
-cd travel-memory-tracker
+   git clone <https://github.com/Kireoda/ServerSideCA2_TravelMemoryTracker.git>
 ```
-
-### 2. Install Dependencies
+### 2. Navigate into the project:
 ```bash
-composer install
-npm install
+   cd travel-memory-tracker
 ```
-
-### 3. Environment Setup
+### 3. Install dependencies:
 ```bash
-cp .env.example .env
-php artisan key:generate
+   composer install
 ```
-
-### 4. Database Setup
+### 4. Copy environment file:
 ```bash
-php artisan migrate
+   cp .env.example .env
 ```
-
-### 5. Run the Application
+### 5. Generate application key:
 ```bash
-php artisan serve
-npm run dev
+   php artisan key:generate
 ```
-
-Visit: http://127.0.0.1:8000
-
 ---
 
+## How to Run the Project
+
+### 1. Start the Laravel server:
+```bash
+   php artisan serve
+```
+Frontend assets are prebuilt and stored in `public/build`, so no Node/Vite step is required.
+### 2. Open in browser:
+   http://127.0.0.1:8000
+
+---
+## Database Setup
+
+### 1. Configure your .env file (SQLite or MySQL)
+
+### 2. Run migrations:
+```bash
+   php artisan migrate
+```
+### 3. (Optional) Seed database:
+```bash
+   php artisan db:seed
+```
+
+### 4. Demo accounts (seeded)
+- Sarah Smith — `sarah.smith@example.com`
+- Mark Byrne — `mark.byrne@example.com`
+- Default password for both: `Password123!`
+---
 ## ⚠️ Assumptions
 
 - Each user manages only their own trips
@@ -220,4 +238,3 @@ During the project defence, the following areas can be explained:
 ## 📄 License
 
 This project is developed for educational purposes as part of a university assignment.
-

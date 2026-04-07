@@ -66,7 +66,7 @@
 - [x] Dashboard route
 - [x] Trip routes
 - [x] Memory routes
-- [ ] Apply auth middleware
+- [x] Apply auth middleware
 - [x] `web.php` exists
 
 ---
@@ -77,7 +77,7 @@
 - [x] trips/create.blade.php
 - [x] trips/edit.blade.php
 - [x] trips/show.blade.php
-- [ ] memories/create.blade.php
+- [x] memories/create.blade.php
 - [x] views folder exists
 
 ---
@@ -105,39 +105,39 @@
 ---
 
 # 12. Trip Details Page
-- [ ] Show trip title
-- [ ] Show location
-- [ ] Show dates
-- [ ] Show description
-- [ ] List memories
-- [ ] Add memory button
-- [ ] Edit trip button
-- [ ] Delete trip button
+- [x] Show trip title
+- [x] Show location
+- [x] Show dates
+- [x] Show description
+- [x] List memories
+- [x] Add memory button
+- [x] Edit trip button
+- [x] Delete trip button
 - [ ] Show Images
 
 ---
 
 # 13. Authentication
-- [ ] Login
-- [ ] Register
-- [ ] Logout
-- [ ] Protect routes
-- [ ] Only show user trips
+- [x] Login
+- [x] Register
+- [x] Logout
+- [x] Protect routes
+- [x] Only show user trips
 
 ---
 
 # 14. Authorisation
-- [ ] Users only see their trips
-- [ ] Users cannot edit others' trips
-- [ ] Users cannot delete others' trips
-- [ ] Users cannot view others' trips
+- [x] Users only see their trips
+- [x] Users cannot edit others' trips
+- [x] Users cannot delete others' trips
+- [x] Users cannot view others' trips
 
 ---
 
 # 15. Validation (Server-side)
-- [ ] Trip validation
-- [ ] Memory validation
-- [ ] Show validation errors
+- [x] Trip validation
+- [x] Memory validation
+- [x] Show validation errors
 
 ---
 
@@ -167,9 +167,9 @@
 ---
 
 # 19. Minimum Pages Requirement
-- [ ] Login page
-- [ ] Register page
-- [ ] Dashboard page
+- [x] Login page
+- [x] Register page
+- [x] Dashboard page
 - [x] Trip details page
 - [x] Add trip page
 
@@ -178,10 +178,10 @@
 # 20. README Requirements
 - [x] Project description
 - [x] Features list
-- [ ] Setup instructions
-- [ ] How to run project
-- [ ] Database setup
-- [ ] Limitations section
+- [x] Setup instructions
+- [x] How to run project
+- [x] Database setup
+- [x] Limitations section
 
 ---
 
@@ -207,10 +207,10 @@
 
 # 23. Core Requirements Checklist
 - [x] Full CRUD feature (Trips)
-- [ ] Relational database
-- [ ] Authentication
-- [ ] Authorisation
-- [ ] Validation
+- [x] Relational database
+- [x] Authentication
+- [x] Authorisation
+- [x] Validation
 - [x] Multiple pages
 - [x] MVC structure started
 

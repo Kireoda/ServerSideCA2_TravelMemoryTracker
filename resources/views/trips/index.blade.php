@@ -3,7 +3,10 @@
 @section('content')
     <section class="page">
         <header class="page-header">
-            <h2>Your Trips</h2>
+            <div>
+                <p class="eyebrow">Your library</p>
+                <h2>Your Trips</h2>
+            </div>
             <a href="{{ route('trips.create') }}" class="button">Create New Trip</a>
         </header>
 
@@ -13,43 +16,48 @@
             </div>
         @endif
 
+        @php
+            $palette = ['#60a5fa', '#34d399', '#f97316', '#f59e0b', '#a78bfa', '#f472b6', '#22d3ee'];
+        @endphp
+
         @if($trips->count())
-            <table class="trip-table">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Location</th>
-                    <th>Dates</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="gallery-grid">
                 @foreach($trips as $trip)
-                    <tr>
-                        <td>{{ $trip->title }}</td>
-                        <td>{{ $trip->location }}</td>
-                        <td>
-                            {{ $trip->start_date }}<br>
-                            <span style="color:#6b7280;">to {{ $trip->end_date ?? 'Ongoing' }}</span>
-                        </td>
-                        <td>
-                            <div class="trip-actions-inline">
+                    @php
+                        $accent = $palette[$trip->id % count($palette)];
+                    @endphp
+                    <article class="gallery-card">
+                        <a href="{{ route('trips.show', $trip) }}" class="card-media" style="--tile-accent: {{ $accent }};">
+                            <div class="card-media-inner">
+                                <span class="card-chip">Trip</span>
+                                <h3>{{ $trip->title }}</h3>
+                                <p class="card-subtitle">{{ $trip->location }}</p>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <p class="meta-line">
+                                {{ $trip->start_date }}
+                                <span class="meta-divider">to</span>
+                                {{ $trip->end_date ?? 'Ongoing' }}
+                            </p>
+                            <div class="card-actions">
                                 <a href="{{ route('trips.show', $trip) }}" class="button">View</a>
                                 <a href="{{ route('trips.edit', $trip) }}" class="button button-secondary">Edit</a>
-
                                 <form method="POST" action="{{ route('trips.destroy', $trip) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="button button-danger">Delete</button>
                                 </form>
                             </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </article>
                 @endforeach
-                </tbody>
-            </table>
+            </div>
         @else
-            <p>No trips created yet.</p>
+            <div class="empty-state">
+                <h3>No trips yet</h3>
+                <p>Create your first trip to start your memory gallery.</p>
+            </div>
         @endif
     </section>
 @endsection
