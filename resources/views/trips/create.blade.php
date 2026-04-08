@@ -8,7 +8,7 @@
         </header>
 
         <div class="form-card">
-            <form action="{{ route('trips.store') }}" method="POST">
+            <form action="{{ route('trips.store') }}" method="POST" enctype="multipart/form-data">
                 @include('trips._form')
             </form>
         </div>

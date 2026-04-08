@@ -9,7 +9,6 @@
             </div>
             <div class="header-actions">
                 <a href="{{ route('trips.show', $trip) }}" class="button button-secondary">Back to Trip</a>
-                <a href="{{ route('trips.memories.create', $trip) }}" class="button">Add Memory</a>
             </div>
         </header>
 
@@ -17,6 +16,22 @@
             <div class="flash-success">
                 {{ session('success') }}
             </div>
+        @endif
+
+        @if($trip->images->count())
+            <section class="detail-panel">
+                <div class="panel-header">
+                    <h3>Trip Gallery</h3>
+                    <span class="memory-count">{{ $trip->images->count() }} photos</span>
+                </div>
+                <div class="image-grid">
+                    @foreach($trip->images as $image)
+                        <div class="image-tile">
+                            <img src="{{ asset('storage/' . $image->path) }}" alt="Trip photo">
+                        </div>
+                    @endforeach
+                </div>
+            </section>
         @endif
 
         @php
@@ -44,12 +59,7 @@
                             <p class="card-description">{{ $memory->description ?: 'No description yet.' }}</p>
                             <div class="card-actions">
                                 <a href="{{ route('trips.memories.show', [$trip, $memory]) }}" class="button">View</a>
-                                <a href="{{ route('trips.memories.edit', [$trip, $memory]) }}" class="button button-secondary">Edit</a>
-                                <form action="{{ route('trips.memories.destroy', [$trip, $memory]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="button button-danger">Delete</button>
-                                </form>
+                                <x-like-button :trip="$trip" :memory="$memory" size="sm" />
                             </div>
                         </div>
                     </article>
@@ -57,8 +67,8 @@
             </div>
         @else
             <div class="empty-state">
-                <h3>No memories yet</h3>
-                <p>Add your first memory to start filling this trip.</p>
+                <h3>No memories generated yet</h3>
+                <p>Memories appear automatically based on your trip details.</p>
             </div>
         @endif
     </section>

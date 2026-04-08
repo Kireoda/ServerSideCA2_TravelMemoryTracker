@@ -4,19 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Memory extends Model
+class TripImage extends Model
 {
     protected $fillable = [
         'trip_id',
-        'title',
-        'location',
-        'date',
-        'description',
-        'liked',
-    ];
-
-    protected $casts = [
-        'liked' => 'boolean',
+        'path',
+        'caption',
     ];
 
     public function trip()

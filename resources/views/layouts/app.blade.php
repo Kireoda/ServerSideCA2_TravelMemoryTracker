@@ -32,5 +32,22 @@
                 @yield('content')
             </main>
         </div>
+
+        <div class="lightbox" data-global-lightbox hidden aria-hidden="true">
+            <div class="lightbox-dialog" role="dialog" aria-label="Photo viewer">
+                <div class="lightbox-toolbar">
+                    <span class="lightbox-counter" data-lightbox-counter></span>
+                    <button type="button" class="button button-secondary" data-lightbox-close>Close</button>
+                </div>
+                <div class="lightbox-stage">
+                    <button type="button" class="lightbox-nav" data-lightbox-prev aria-label="Previous photo">‹</button>
+                    <img class="lightbox-image" data-lightbox-image alt="">
+                    <button type="button" class="lightbox-nav" data-lightbox-next aria-label="Next photo">›</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="{{ asset('js/lightbox.js') }}" defer></script>
+        @stack('scripts')
     </body>
 </html>

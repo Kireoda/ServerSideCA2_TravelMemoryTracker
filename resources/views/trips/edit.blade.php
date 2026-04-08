@@ -8,7 +8,7 @@
         </header>
 
         <div class="form-card">
-            <form action="{{ route('trips.update', $trip) }}" method="POST">
+            <form action="{{ route('trips.update', $trip) }}" method="POST" enctype="multipart/form-data">
                 @include('trips._form', ['trip' => $trip])
             </form>
         </div>

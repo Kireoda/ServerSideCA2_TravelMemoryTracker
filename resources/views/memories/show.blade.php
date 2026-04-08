@@ -13,7 +13,7 @@
                 <p class="detail-dates">{{ $memory->date ?: 'No date yet' }}</p>
                 <div class="detail-actions">
                     <a href="{{ route('trips.memories.index', $trip) }}" class="button button-secondary">Back to Memories</a>
-                    <a href="{{ route('trips.memories.edit', [$trip, $memory]) }}" class="button">Edit Memory</a>
+                    <x-like-button :trip="$trip" :memory="$memory" />
                 </div>
             </div>
         </header>
@@ -22,5 +22,21 @@
             <h3>Description</h3>
             <p>{{ $memory->description ?: 'No description provided yet.' }}</p>
         </article>
+
+        @if($trip->images->count())
+            <article class="detail-panel">
+                <div class="panel-header">
+                    <h3>Trip Gallery</h3>
+                    <span class="memory-count">{{ $trip->images->count() }} photos</span>
+                </div>
+                <div class="image-grid">
+                    @foreach($trip->images as $image)
+                        <div class="image-tile">
+                            <img src="{{ asset('storage/' . $image->path) }}" alt="Trip photo">
+                        </div>
+                    @endforeach
+                </div>
+            </article>
+        @endif
     </section>
 @endsection

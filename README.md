@@ -157,7 +157,11 @@ Frontend assets are prebuilt and stored in `public/build`, so no Node/Vite step 
 
 ### 2. Run migrations:
 ```bash
-   php artisan migrate 
+   php artisan migrate
+```
+If you're adding cover images for trips, run this once to make storage public:
+```bash
+   php artisan storage:link
 ```
 ### 3. (Optional) Seed database:
 ```bash

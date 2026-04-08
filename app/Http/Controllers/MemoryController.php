@@ -12,6 +12,8 @@ class MemoryController extends Controller
     {
         $this->authorizeTrip($trip);
 
+        $this->generateMemoriesIfMissing($trip);
+
         $memories = $trip->memories()
             ->latest()
             ->get();
@@ -48,6 +50,8 @@ class MemoryController extends Controller
     {
         $this->authorizeTrip($trip);
         $this->authorizeMemory($trip, $memory);
+
+        $trip->load('images');
 
         return view('memories.show', compact('trip', 'memory'));
     }
@@ -91,6 +95,17 @@ class MemoryController extends Controller
             ->with('success', 'Memory deleted successfully.');
     }
 
+    public function toggleLike(Trip $trip, Memory $memory)
+    {
+        $this->authorizeTrip($trip);
+        $this->authorizeMemory($trip, $memory);
+
+        $memory->liked = ! $memory->liked;
+        $memory->save();
+
+        return back()->with('success', $memory->liked ? 'Memory liked.' : 'Memory unliked.');
+    }
+
     private function authorizeTrip(Trip $trip): void
     {
         abort_if($trip->user_id !== auth()->id(), 403);
@@ -99,5 +114,20 @@ class MemoryController extends Controller
     private function authorizeMemory(Trip $trip, Memory $memory): void
     {
         abort_if($memory->trip_id !== $trip->id, 404);
+    }
+
+    private function generateMemoriesIfMissing(Trip $trip): void
+    {
+        if ($trip->memories()->exists()) {
+            return;
+        }
+
+        $trip->memories()->create([
+            'title' => 'Trip overview',
+            'location' => $trip->location,
+            'date' => $trip->start_date,
+            'description' => $trip->description
+                ?: sprintf('A memory generated from the trip "%s".', $trip->title),
+        ]);
     }
 }
