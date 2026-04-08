@@ -46,17 +46,33 @@
             @endphp
 
             @if(!empty($recentTrips) && $recentTrips->count())
-                <div class="trip-grid">
-                    @foreach($recentTrips as $index => $trip)
+                <div class="trip-carousel" data-carousel>
+                    <div class="trip-carousel-nav" aria-label="Trip navigation">
+                        <button type="button" class="carousel-nav" data-carousel-prev aria-label="Previous trip">‹</button>
+                        <button type="button" class="carousel-nav" data-carousel-next aria-label="Next trip">›</button>
+                    </div>
+
+                    <div class="trip-carousel-track" data-carousel-track tabindex="0" aria-label="Recent trips carousel">
+                    @foreach($recentTrips as $trip)
                         @php
                             $accent = $palette[$trip->id % count($palette)];
                             $coverUrl = $trip->coverImageUrl;
+                            $slideshowImages = collect($trip->images)
+                                ->map(fn ($image) => asset('storage/' . $image->path))
+                                ->prepend($coverUrl)
+                                ->filter()
+                                ->unique()
+                                ->values();
                         @endphp
 
-                        <article class="trip-card {{ $index === 0 ? 'trip-card--featured' : '' }}">
+                        <article class="trip-card trip-card--hero">
                             <a href="{{ route('trips.show', $trip) }}"
-                               class="trip-card-media"
+                               class="trip-card-media trip-card-media--slideshow"
+                               @if($slideshowImages->count() > 1) data-dashboard-slideshow='@json($slideshowImages)' @endif
                                style="--tile-accent: {{ $accent }}; @if($coverUrl) --cover-image: url('{{ $coverUrl }}'); @endif">
+                                @if($slideshowImages->count())
+                                    <img class="trip-card-media-photo" src="{{ $slideshowImages->first() }}" alt="" loading="lazy">
+                                @endif
                                 <div class="trip-card-media-inner">
                                     <div class="trip-card-chips">
                                         <span class="card-chip">Trip</span>
@@ -72,30 +88,9 @@
                                     </p>
                                 </div>
                             </a>
-                            <div class="trip-card-actions">
-                                <a href="{{ route('trips.show', $trip) }}" class="button">Open</a>
-                                <a href="{{ route('trips.edit', $trip) }}" class="button button-secondary">Edit</a>
-                            </div>
-
-                            @if($trip->images->count())
-                                <div class="trip-thumb-row" aria-label="Trip photo previews">
-                                    @foreach($trip->images->take(5) as $image)
-                                        @php
-                                            $imageUrl = asset('storage/' . $image->path);
-                                        @endphp
-                                        <a class="trip-thumb-link" href="{{ route('trips.show', $trip) }}" aria-label="Open trip">
-                                            <img
-                                                class="trip-thumb"
-                                                src="{{ $imageUrl }}"
-                                                alt="Trip photo preview"
-                                                loading="lazy"
-                                            >
-                                        </a>
-                                    @endforeach
-                                </div>
-                            @endif
                         </article>
                     @endforeach
+                    </div>
                 </div>
             @else
                 <div class="empty-state">
@@ -107,3 +102,8 @@
         </section>
     </section>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/dashboard-slideshow.js') }}" defer></script>
+    <script src="{{ asset('js/dashboard-carousel.js') }}" defer></script>
+@endpush

@@ -1,5 +1,11 @@
 <?php
 
+$compiled = env('VIEW_COMPILED_PATH', storage_path('framework/views'));
+
+if (! is_dir($compiled) || ! is_writable($compiled)) {
+    $compiled = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'laravel-views';
+}
+
 return [
 
     /*
@@ -26,9 +32,6 @@ return [
     |
     */
 
-    'compiled' => env(
-        'VIEW_COMPILED_PATH',
-        storage_path('framework/views')
-    ),
+    'compiled' => $compiled,
 
 ];
