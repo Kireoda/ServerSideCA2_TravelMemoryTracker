@@ -36,8 +36,6 @@
                             <div class="trip-card-media-inner">
                                 <div class="trip-card-chips">
                                     <span class="card-chip">Trip</span>
-                                    <span class="trip-metric">{{ $trip->images_count }} photos</span>
-                                    <span class="trip-metric">{{ $trip->memories_count }} memories</span>
                                 </div>
                                 <h3>{{ $trip->title }}</h3>
                                 <p class="card-subtitle">{{ $trip->location }}</p>
@@ -48,33 +46,16 @@
                                 </p>
                             </div>
                         </a>
-                        <div class="trip-card-actions">
-                            <a href="{{ route('trips.show', $trip) }}" class="button">Open</a>
-                            <a href="{{ route('trips.edit', $trip) }}" class="button button-secondary">Edit</a>
-                            <form method="POST" action="{{ route('trips.destroy', $trip) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="button button-danger">Delete</button>
-                            </form>
-                        </div>
-
-                        @if($trip->images->count())
-                            <div class="trip-thumb-row" aria-label="Trip photo previews">
-                                @foreach($trip->images->take(5) as $image)
-                                    @php
-                                        $imageUrl = asset('storage/' . $image->path);
-                                    @endphp
-                                    <img
-                                        class="trip-thumb"
-                                        src="{{ $imageUrl }}"
-                                        alt="Trip photo preview"
-                                        loading="lazy"
-                                        data-lightbox-item
-                                        data-full="{{ $imageUrl }}"
-                                    >
-                                @endforeach
+                        <div class="trip-card-footer">
+                            <div class="trip-card-actions">
+                                <a href="{{ route('trips.edit', $trip) }}" class="button button-secondary button-sm">Edit</a>
+                                <form method="POST" action="{{ route('trips.destroy', $trip) }}" onsubmit="return confirm('Delete this trip?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="button button-danger button-sm">Delete</button>
+                                </form>
                             </div>
-                        @endif
+                        </div>
                     </article>
                 @endforeach
             </div>

@@ -290,6 +290,14 @@ a.button:focus {
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.24), 0 16px 28px rgba(15, 23, 42, 0.16);
 }
 
+.button-sm,
+button.button.button-sm,
+a.button.button-sm {
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 12px;
+}
+
 .button-secondary {
     background: rgba(255, 255, 255, 0.86);
     color: #0f172a;
@@ -1123,8 +1131,7 @@ textarea {
 
 .trip-card--featured {
     grid-column: span 12;
-    grid-template-columns: minmax(280px, 1.5fr) 1fr;
-    align-items: stretch;
+    grid-template-columns: 1fr;
 }
 
 .trip-card-media {
@@ -1218,6 +1225,15 @@ textarea {
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
+}
+
+.trip-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 12px;
 }
 
 .trip-thumb-row {
