@@ -13,6 +13,16 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const burger = document.getElementById('hamburger');
+                const actions = document.getElementById('userActions');
+
+                burger.addEventListener('click', function () {
+                    actions.classList.toggle('active');
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="app-shell">

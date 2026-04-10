@@ -13,7 +13,13 @@
             </a>
         </nav>
 
-        <div class="user-actions">
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="user-actions" id="userActions">
             <span>{{ Auth::user()->name }}</span>
             <a href="{{ route('profile.edit') }}" class="button button-secondary">Profile</a>
             <form method="POST" action="{{ route('logout') }}">
