@@ -14,8 +14,21 @@ class PersonaTripsSeeder extends Seeder
      */
     public function run(): void
     {
+        $kornel = User::where('email', 'orikornel@yahoo.co.uk')->first();
         $sarah = User::where('email', 'sarah.smith@example.com')->first();
         $mark = User::where('email', 'mark.byrne@example.com')->first();
+
+        if ($kornel) {
+            $this->seedTripsForUser($kornel->id, [
+                [
+                    'title' => 'Spring Norway',
+                    'location' => 'Bergen',
+                    'start_date' => '2025-05-29',
+                    'end_date' => '2025-05-30',
+                    'description' => 'Cool Bergen',
+                ],
+            ]);
+        }
 
         if ($sarah) {
             $this->seedTripsForUser($sarah->id, [
