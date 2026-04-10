@@ -1,2 +1,6 @@
 *
 !.gitignore
+!trip-covers/
+!trip-covers/**
+!trip-images/
+!trip-images/**
