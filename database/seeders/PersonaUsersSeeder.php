@@ -16,11 +16,6 @@ class PersonaUsersSeeder extends Seeder
         $defaultPassword = Hash::make('Password123!');
 
         User::updateOrCreate(
-            ['email' => 'orikornel@yahoo.co.uk'],
-            ['name' => 'Kornel', 'password' => $defaultPassword]
-        );
-
-        User::updateOrCreate(
             ['email' => 'sarah.smith@example.com'],
             ['name' => 'Sarah Smith', 'password' => $defaultPassword]
         );
