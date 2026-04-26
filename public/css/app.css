@@ -208,7 +208,7 @@ a:hover {
 
 .user-actions span {
     font-weight: 600;
-    color: rgb(0, 0, 0);
+    color: rgb(78, 135, 182);
 }
 
 main {
@@ -537,20 +537,21 @@ a.button.button-sm {
 .form-label {
     display: block;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-top: 8px;
     color: #111827;
 }
 
 label {
     display: block;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-top: 8px;
     color: #111827;
 }
 
 .form-input,
 input,
 textarea {
+    margin-top: 4px;
     width: 100%;
     max-width: 620px;
     padding: 12px 14px;
@@ -1119,6 +1120,23 @@ textarea {
 .trip-carousel.is-fullscreen .trip-carousel-nav {
     z-index: 10;
 }
+.trip-carousel.is-fullscreen .trip-card--hero {
+    height: 100%;
+}
+.trip-carousel.is-fullscreen .trip-card-media {
+    height: 100%;
+    aspect-ratio: unset;
+}
+.trip-carousel.is-fullscreen .trip-card-media-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.trip-carousel.is-fullscreen .trip-carousel-track {
+    height: 100%;
+    align-items: stretch;
+}
+
 
 .carousel-nav {
     pointer-events: auto;
@@ -1388,6 +1406,7 @@ textarea {
 }
 
 .trip-hero-title {
+    color: white;
     margin: 0 0 10px;
     font-size: clamp(32px, 3.6vw, 46px);
     line-height: 1.05;

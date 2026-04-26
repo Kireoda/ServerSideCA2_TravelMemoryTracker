@@ -21,6 +21,9 @@
         </button>
 
         <div class="user-actions" id="userActions">
+            @if(Auth::user()->avatar)
+                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+            @endif
             <span>{{ Auth::user()->name }}</span>
             <a href="{{ route('profile.edit') }}" class="button button-secondary">Profile</a>
             <form method="POST" action="{{ route('logout') }}">

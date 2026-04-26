@@ -3,10 +3,11 @@
 ## From Feedback
 - [ x ] Make front page (before login) fit travel theme
 - [ x ] Add logo
-- [ ] Make carousel fullscreen
-- [ ] Add profile photo (upload + display)
-- [ ] Remove quick slide/scroll from front page
-- [ ] Change whole site from business to travel vibes (sunshine, mountains, beach)
+- [ x ] Make carousel fullscreen
+- [ ] Make fullscreen carousel actually look good
+- [ x ] Add profile photo (upload + display)
+- [ x ] Remove quick slide/scroll from front page
+- [ x ] Change whole site from business to travel vibes (sunshine, mountains, beach)
 - [ ] Add padding to form labels
 - [ ] Add GIF to GitHub description
 - [ ] Add LinkedIn/profile links in footer

@@ -7,6 +7,10 @@
         </header>
 
         <div class="form-card">
+            @include('profile.partials.update-avatar-form')
+        </div>
+
+        <div class="form-card">
             @include('profile.partials.update-profile-information-form')
         </div>
 
