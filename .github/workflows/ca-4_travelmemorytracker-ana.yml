@@ -40,6 +40,11 @@ jobs:
           name: php-app
           path: .
 
+      - name: Fix permissions
+        run: |
+            chmod -R 775 storage
+            chmod -R 775 bootstrap/cache
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
