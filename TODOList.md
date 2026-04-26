@@ -1,42 +1,30 @@
-```markdown
-# Travel Memory Tracker - Improvement TODO List
+# TODO List
 
-## High Priority
-- [ ] Create logo and add to navigation/footer
-- [ ] Add full-screen hero carousel on dashboard
-- [ ] Redesign carousel UI with arrows and dots
-- [ ] Remove quick slide, implement smooth scroll
-- [ ] Overhaul CSS with travel theme (earth tones, polaroid cards, ticket borders)
-- [ ] Add padding to all form labels
-- [ ] Add profile photo upload for users
-- [ ] Create profile customizer with accessibility options (dark/light mode, font size)
-- [ ] Integrate location maps for trips (Leaflet.js)
+## From Feedback
+- [ ] Make front page (before login) fit travel theme
+- [ ] Add logo
+- [ ] Make carousel fullscreen
+- [ ] Add profile photo (upload + display)
+- [ ] Remove quick slide/scroll from front page
+- [ ] Change whole site from business to travel vibes (sunshine, mountains, beach)
+- [ ] Add padding to form labels
+- [ ] Add GIF to GitHub description
+- [ ] Add LinkedIn/profile links in footer
+- [ ] Improve README
+- [ ] Remove memories feature entirely
+- [ ] Add highlights field to trips (comma separated)
+- [ ] Add best_photo upload to trips
+- [ ] Add rating field to trips (1-5 stars)
+- [ ] Add trip status dropdown (Planned/Ongoing/Finished)
+- [ ] Display memory count on trip cards (use highlights count instead)
+- [ ] Sort trips by start_date (newest first)
 
-## Medium Priority
-- [ ] Add engaging travel images to main page/dashboard
-- [ ] Implement Laravel Policies for trips and memories
-- [ ] Create Form Requests for validation
-- [ ] Add soft deletes to trips and memories
-- [ ] Add foreign key indexes for performance
-- [ ] Add trip duration badge (auto-calculate from start/end dates)
-- [ ] Add memory counter on trip cards
-- [ ] Add confirmation modal before deleting trips or memories
 
-## Low Priority
-- [ ] Add image upload for memories
-- [ ] Add trip status (Planned/Ongoing/Finished)
-- [ ] Create GitHub repository GIF preview
-- [ ] Add LinkedIn profile links to README
-- [ ] Improve README with screenshots and badges
-- [ ] Create feature branches and merge workflow
-
-## CA3 Deployment Requirements (Microsoft Azure)
-- [ ] Deploy Laravel application to Microsoft Azure
-- [ ] Configure cloud database on Azure (MySQL/PostgreSQL)
-- [ ] Set up environment variables (.env) for production
-- [ ] Ensure public URL is accessible
-- [ ] Verify database connection works in production
-- [ ] Test all core functionality runs without errors in deployed environment
-- [ ] Add public URL link to README.md
-- [ ] Prepare verbal reflection on deployment process (challenges, solutions, evaluation)
-```
+## From CA3 Project Description
+- [ ] Deploy Laravel app to Microsoft Azure
+- [ ] Make app accessible via public URL
+- [ ] Connect to database on Azure
+- [ ] Ensure no critical errors on live site
+- [ ] Add live URL to README.md
+- [ ] Prepare verbal reflection (deployment process, challenges, solutions)
+- [ ] Show consistent git commits over time
