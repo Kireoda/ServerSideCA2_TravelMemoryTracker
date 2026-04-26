@@ -29,6 +29,14 @@ jobs:
         with:
           files: 'composer.json'
 
+      - name: Prepare Laravel folders
+        run: |
+          mkdir -p bootstrap/cache
+          mkdir -p storage/framework
+          mkdir -p storage/logs
+          chmod -R 777 bootstrap/cache
+          chmod -R 777 storage
+
       - name: Run composer install if composer.json exists
         if: steps.check_files.outputs.files_exists == 'true'
         run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
@@ -39,11 +47,6 @@ jobs:
         with:
           name: php-app
           path: .
-
-      - name: Fix permissions
-        run: |
-            chmod -R 775 storage
-            chmod -R 775 bootstrap/cache
 
   deploy:
     runs-on: ubuntu-latest
