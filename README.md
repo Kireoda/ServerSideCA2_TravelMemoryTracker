@@ -1,5 +1,7 @@
 # Travel Memory Tracker
 
+![Demo](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTZjOHh5b2o2bnRhdW81MmRtMWpvb3hsZWhpdDF3MjJuOGx6aTdoZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3qZxzu4EfOqjTcqUw2/giphy.gif)
+
 ## 📌 Project Overview
 
 Travel Memory Tracker is a Laravel-based web application that allows users to create, organise, and revisit memories from their trips and holidays.
