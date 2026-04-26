@@ -1,13 +1,7 @@
 
-INSERT INTO `memories` (`id`, `trip_id`, `title`, `location`, `date`, `description`, `liked`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Trip Highlight', 'Lisbon, Portugal', '2024-03-12', 'Pastel de nata stops, rooftop sunsets, and tram rides.', 1, '2026-04-26 16:14:40', '2026-04-26 17:17:24'),
-(2, 2, 'Trip Highlight', 'Donegal, Ireland', '2024-06-01', 'Cliffs, sea air, and a notebook full of sketches.', 0, '2026-04-26 16:14:41', '2026-04-26 16:14:41'),
-(3, 3, 'Trip Highlight', 'Paris, France', '2024-10-18', 'Galleries, cafe stops, and late-night photo walks.', 0, '2026-04-26 16:14:41', '2026-04-26 16:14:41'),
-(4, 4, 'Trip Highlight', 'London, UK', '2024-02-09', 'Quick city break with museums and river walk.', 0, '2026-04-26 16:14:42', '2026-04-26 16:14:42'),
-(5, 5, 'Trip Highlight', 'Galway, Ireland', '2024-07-05', 'Seafood market, live music, and a quiet beach stroll.', 0, '2026-04-26 16:14:42', '2026-04-26 16:14:42'),
-(6, 6, 'Trip Highlight', 'Amsterdam, Netherlands', '2024-11-15', 'Canal views, bike ride, and a cozy coffee spot.', 0, '2026-04-26 16:14:43', '2026-04-26 16:14:43'),
-(7, 1, 'Testimng', 'Spain', '2026-04-21', 'Today i DIDNT !!!! went to a shop', 0, '2026-04-26 18:44:52', '2026-04-26 18:50:13');
-
+INSERT INTO `users` (`id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Sarah Smith', 'sarah.smith@example.com', 'avatars/R29jRaKDoZqVycSVOB1a0OmGhnngSs5PfZlIaZkn.jpg', NULL, '$2y$12$hjGym33kjKOnPVExmI.6Tu62g0SZUQQpKXefA0jEiwUh6BRVV3qJq', NULL, '2026-04-26 16:14:40', '2026-04-26 16:15:01'),
+(2, 'Mark Byrne', 'mark.byrne@example.com', NULL, NULL, '$2y$12$hjGym33kjKOnPVExmI.6Tu62g0SZUQQpKXefA0jEiwUh6BRVV3qJq', NULL, '2026-04-26 16:14:40', '2026-04-26 16:14:40');
 
 INSERT INTO `trips` (`id`, `title`, `location`, `start_date`, `end_date`, `description`, `status`, `cover_image`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'Lisbon City Break', 'Lisbon, Portugal', '2024-03-12', '2024-03-16', 'Pastel de nata stops, rooftop sunsets, and tram rides. what happens here?', 'Planned', 'trip-images/Lisbon/7Ye1hBLAu9MUlLRK2P7Jg6CPBIwFqESMkDv0o1Wz.jpg', 1, '2026-04-26 16:14:40', '2026-04-26 18:51:28'),
@@ -16,6 +10,16 @@ INSERT INTO `trips` (`id`, `title`, `location`, `start_date`, `end_date`, `descr
 (4, 'London Weekend', 'London, UK', '2024-02-09', '2024-02-11', 'Quick city break with museums and river walk.', 'Planned', 'trip-images/London/pexels-anatoleos-35404967.jpg', 2, '2026-04-26 16:14:42', '2026-04-26 16:14:42'),
 (5, 'Galway Escape', 'Galway, Ireland', '2024-07-05', '2024-07-07', 'Seafood market, live music, and a quiet beach stroll.', 'Planned', 'trip-images/Galway/pexels-alina-rossoshanska-338724645-23644598.jpg', 2, '2026-04-26 16:14:42', '2026-04-26 16:14:42'),
 (6, 'Amsterdam Short Stay', 'Amsterdam, Netherlands', '2024-11-15', '2024-11-17', 'Canal views, bike ride, and a cozy coffee spot.', 'Planned', 'trip-images/Amsterdam/pexels-always-sunny-travels-198265663-16515234.jpg', 2, '2026-04-26 16:14:43', '2026-04-26 16:14:43');
+
+
+INSERT INTO `memories` (`id`, `trip_id`, `title`, `location`, `date`, `description`, `liked`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Trip Highlight', 'Lisbon, Portugal', '2024-03-12', 'Pastel de nata stops, rooftop sunsets, and tram rides.', 1, '2026-04-26 16:14:40', '2026-04-26 17:17:24'),
+(2, 2, 'Trip Highlight', 'Donegal, Ireland', '2024-06-01', 'Cliffs, sea air, and a notebook full of sketches.', 0, '2026-04-26 16:14:41', '2026-04-26 16:14:41'),
+(3, 3, 'Trip Highlight', 'Paris, France', '2024-10-18', 'Galleries, cafe stops, and late-night photo walks.', 0, '2026-04-26 16:14:41', '2026-04-26 16:14:41'),
+(4, 4, 'Trip Highlight', 'London, UK', '2024-02-09', 'Quick city break with museums and river walk.', 0, '2026-04-26 16:14:42', '2026-04-26 16:14:42'),
+(5, 5, 'Trip Highlight', 'Galway, Ireland', '2024-07-05', 'Seafood market, live music, and a quiet beach stroll.', 0, '2026-04-26 16:14:42', '2026-04-26 16:14:42'),
+(6, 6, 'Trip Highlight', 'Amsterdam, Netherlands', '2024-11-15', 'Canal views, bike ride, and a cozy coffee spot.', 0, '2026-04-26 16:14:43', '2026-04-26 16:14:43'),
+(7, 1, 'Testing', 'Spain', '2026-04-21', 'Today i  went to a shop', 0, '2026-04-26 18:44:52', '2026-04-26 18:50:13');
 
 
 INSERT INTO `trip_images` (`id`, `trip_id`, `path`, `caption`, `created_at`, `updated_at`) VALUES
@@ -79,7 +83,3 @@ INSERT INTO `trip_images` (`id`, `trip_id`, `path`, `caption`, `created_at`, `up
 (58, 6, 'trip-images/Amsterdam/pexels-thatguycraig000-30201046.jpg', NULL, '2026-04-26 16:14:44', '2026-04-26 16:14:44'),
 (59, 6, 'trip-images/Amsterdam/pexels-wolfart-16092926.jpg', NULL, '2026-04-26 16:14:44', '2026-04-26 16:14:44');
 
-
-INSERT INTO `users` (`id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Sarah Smith', 'sarah.smith@example.com', 'avatars/R29jRaKDoZqVycSVOB1a0OmGhnngSs5PfZlIaZkn.jpg', NULL, '$2y$12$hjGym33kjKOnPVExmI.6Tu62g0SZUQQpKXefA0jEiwUh6BRVV3qJq', NULL, '2026-04-26 16:14:40', '2026-04-26 16:15:01'),
-(2, 'Mark Byrne', 'mark.byrne@example.com', NULL, NULL, '$2y$12$hjGym33kjKOnPVExmI.6Tu62g0SZUQQpKXefA0jEiwUh6BRVV3qJq', NULL, '2026-04-26 16:14:40', '2026-04-26 16:14:40');
