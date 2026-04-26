@@ -1,74 +1,42 @@
-# ✈ Travel Memory Tracker — To-Do List
+```markdown
+# Travel Memory Tracker - Improvement TODO List
 
----
+## High Priority
+- [ ] Create logo and add to navigation/footer
+- [ ] Add full-screen hero carousel on dashboard
+- [ ] Redesign carousel UI with arrows and dots
+- [ ] Remove quick slide, implement smooth scroll
+- [ ] Overhaul CSS with travel theme (earth tones, polaroid cards, ticket borders)
+- [ ] Add padding to all form labels
+- [ ] Add profile photo upload for users
+- [ ] Create profile customizer with accessibility options (dark/light mode, font size)
+- [ ] Integrate location maps for trips (Leaflet.js)
 
-## 🔴 High Priority (UI + First Impression)
+## Medium Priority
+- [ ] Add engaging travel images to main page/dashboard
+- [ ] Implement Laravel Policies for trips and memories
+- [ ] Create Form Requests for validation
+- [ ] Add soft deletes to trips and memories
+- [ ] Add foreign key indexes for performance
+- [ ] Add trip duration badge (auto-calculate from start/end dates)
+- [ ] Add memory counter on trip cards
+- [ ] Add confirmation modal before deleting trips or memories
 
-### Homepage / Visual Design
-- [ ] Add logo (navbar + homepage)
-- [ ] Add hero section (main landing area)
-- [ ] Add video background OR large image background
-- [ ] Replace quick slide with smooth scrolling
-- [ ] Add full-screen section for carousel
-- [ ] Rework carousel UI (bigger, cleaner, modern)
-- [ ] Improve “Next Trip” navigation (arrows/buttons clarity)
+## Low Priority
+- [ ] Add image upload for memories
+- [ ] Add trip status (Planned/Ongoing/Finished)
+- [ ] Create GitHub repository GIF preview
+- [ ] Add LinkedIn profile links to README
+- [ ] Improve README with screenshots and badges
+- [ ] Create feature branches and merge workflow
 
-### Styling Improvements
-- [ ] Make UI more “travel themed”
-  - colours (earth tones, blues, sunset tones)
-  - fonts (clean + slightly expressive)
-- [ ] Improve CSS consistency across pages
-- [ ] Add padding to form labels
-- [ ] Improve spacing (margins, layout balance)
-
----
-
-## 🟠 Medium Priority (Features + UX)
-
-### User Features
-- [ ] Add profile photo upload
-- [ ] Add profile customisation (basic settings)
-- [ ] Improve accessibility
-  - better contrast
-  - keyboard navigation
-  - proper labels
-
-### Trip Experience
-- [ ] Add location map (Google Maps or similar)
-- [ ] Improve trip visuals to feel more “travel-like”
-
-### Authentication Enhancements
-- [ ] Add Google login
-- [ ] Add Facebook login
-
----
-
-## 🟡 Medium–Low Priority (Admin / Extra Features)
-
-- [ ] Add admin role
-- [ ] Allow admin to remove users
-- [ ] Add basic admin UI or route protection
-
----
-
-## 🔵 Documentation + Portfolio (IMPORTANT)
-
-### GitHub / README
-- [ ] Improve README
-  - clearer description
-  - features list
-  - screenshots
-  - setup instructions
-- [ ] Add GIF demo of the app
-- [ ] Add links:
-  - LinkedIn
-  - portfolio
-  - GitHub profile
-
----
-
-## 🟢 Optional Polish
-
-- [ ] Add animations (hover effects, transitions)
-- [ ] Improve mobile responsiveness
-- [ ] Refine dashboard layout
+## CA3 Deployment Requirements (Microsoft Azure)
+- [ ] Deploy Laravel application to Microsoft Azure
+- [ ] Configure cloud database on Azure (MySQL/PostgreSQL)
+- [ ] Set up environment variables (.env) for production
+- [ ] Ensure public URL is accessible
+- [ ] Verify database connection works in production
+- [ ] Test all core functionality runs without errors in deployed environment
+- [ ] Add public URL link to README.md
+- [ ] Prepare verbal reflection on deployment process (challenges, solutions, evaluation)
+```
