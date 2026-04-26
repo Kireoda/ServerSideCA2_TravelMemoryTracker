@@ -149,7 +149,6 @@ routes/web.php
 
 ### Installation
 
-```bash
 git clone https://github.com/Kireoda/ServerSideCA2_TravelMemoryTracker.git
 cd ServerSideCA2_TravelMemoryTracker
 
@@ -164,10 +163,10 @@ Run
 php artisan serve
 
 Open:
-
 http://127.0.0.1:8000
 Azure Deployment
-Steps
+
+## Steps
 Created Azure App Service (PHP)
 Configured database connection
 Set environment variables
@@ -181,27 +180,8 @@ DB_HOST=your-db.mysql.database.azure.com
 DB_DATABASE=travel_memory_tracker
 DB_USERNAME=your-username
 DB_PASSWORD=your-password
-Limitations
-Some planned features not fully implemented
-No map integration
-No social features
-Future Improvements
-Google Maps integration
-Social login
-Public trip sharing
-Export trips as PDF
-Testing
 
-Manual testing ensured:
-
-CRUD functionality
-Validation rules
-Authorisation
-Contributors
-Name	Role
-You	Development, Deployment, Improvements
-Kireoda	Initial development
-AI Tools
+## AI Tools
 
 AI was used for:
 
