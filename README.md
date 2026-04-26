@@ -5,9 +5,9 @@
 ---
 
 ## Demo
-
+not working need to fix
 <p align="center">
-  <img src="images/demo.gif" width="700">
+  <img src="images/gif.gif" width="700">
 </p>
 
 ---
@@ -64,7 +64,7 @@ The application is deployed on **Microsoft Azure**:
 - Upload and display profile picture
 
 ### UI / UX
-- Travel-themed design (sky, ocean, sunset tones)
+- Travel-themed design
 - Responsive layout with mobile navigation
 - Fullscreen carousel for trip images
 
@@ -85,20 +85,17 @@ The project was refined based on feedback from the previous assignment, focusing
 - Improved form spacing and label padding
 - Added footer with profile / LinkedIn links
 
----
-
-### In Progress / Planned
-
-- Improve fullscreen carousel UI/UX
-- Add demo GIF to GitHub README
-- Further improve README structure
-- Remove unnecessary memory feature
-- Add trip highlights (comma-separated tags)
-- Add best photo upload per trip
-- Add trip rating system (1–5 stars)
-- Add trip status (Planned / Ongoing / Finished)
-- Display trip summary data on cards
-- Sort trips by start date (newest first)
+(still need to do)
+- Improved fullscreen carousel UI/UX
+- Added demo GIF to GitHub README
+- Further improved README structure
+- Removed unnecessary memory feature
+- Added trip highlights (comma-separated tags)
+- Added best photo upload per trip
+- Added trip rating system (1–5 stars)
+- Added trip status (Planned / Ongoing / Finished)
+- Displayed trip summary data on cards
+- Sorted trips by start date (newest first)
 
 ---
 
@@ -152,7 +149,6 @@ routes/web.php
 
 ### Installation
 
-```bash
 git clone https://github.com/Kireoda/ServerSideCA2_TravelMemoryTracker.git
 cd ServerSideCA2_TravelMemoryTracker
 
@@ -167,10 +163,10 @@ Run
 php artisan serve
 
 Open:
-
 http://127.0.0.1:8000
 Azure Deployment
-Steps
+
+## Steps
 Created Azure App Service (PHP)
 Configured database connection
 Set environment variables
@@ -184,27 +180,8 @@ DB_HOST=your-db.mysql.database.azure.com
 DB_DATABASE=travel_memory_tracker
 DB_USERNAME=your-username
 DB_PASSWORD=your-password
-Limitations
-Some planned features not fully implemented
-No map integration
-No social features
-Future Improvements
-Google Maps integration
-Social login
-Public trip sharing
-Export trips as PDF
-Testing
 
-Manual testing ensured:
-
-CRUD functionality
-Validation rules
-Authorisation
-Contributors
-Name	Role
-You	Development, Deployment, Improvements
-Kireoda	Initial development
-AI Tools
+## AI Tools
 
 AI was used for:
 
