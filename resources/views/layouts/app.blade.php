@@ -44,6 +44,7 @@
             <!-- Page Content -->
             <main>
                 @yield('content')
+                @include('layouts.footer')
             </main>
         </div>
 
@@ -60,7 +61,6 @@
                 </div>
             </div>
         </div>
-
         <script src="{{ asset('js/lightbox.js') }}" defer></script>
         @stack('scripts')
     </body>

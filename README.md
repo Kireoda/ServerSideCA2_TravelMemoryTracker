@@ -1,244 +1,223 @@
 # Travel Memory Tracker
 
-## 📌 Project Overview
+> **Live URL:** {insert URL here}
 
-Travel Memory Tracker is a Laravel-based web application that allows users to create, organise, and revisit memories from their trips and holidays.
+---
 
-The application solves the common problem of travel memories being scattered across different platforms (photos, notes, apps) by providing a **single structured system** where users can:
+## Demo
+
+<p align="center">
+  <img src="images/demo.gif" width="700">
+</p>
+
+---
+
+## Overview
+
+Travel Memory Tracker is a Laravel web application that allows users to organise and revisit travel experiences in one place.
+
+Instead of scattered photos, notes, and apps, everything is structured into trips.
+
+Users can:
 - Create trips
-- Add memories within those trips
+- Upload and organise images
+- Track travel details and highlights
 - View and manage everything in one place
 
-This project was developed as part of the **Server-Side Development (CA2)** module and follows a **Model–View–Controller (MVC)** architecture using Laravel.
+This project was developed as part of **Server-Side Development (CA3)**, focusing on **deployment, feedback implementation, and real-world development practices**.
 
 ---
 
-## 🎯 Purpose
+## Live Deployment
 
-The goal of this project is to:
-- Build a realistic full-stack Laravel application
-- Apply MVC principles in a real-world scenario
-- Demonstrate CRUD functionality with relational data
-- Focus on usability and user-centred design
+The application is deployed on **Microsoft Azure**:
 
----
+👉 https://your-app.azurewebsites.net
 
-## 👤 Target Users
+### Demo Accounts
 
-The application is designed based on two user personas:
-
-### Primary User – Sarah (Frequent Traveller)
-- Wants to organise detailed travel memories
-- Takes photos and notes regularly
-- Values clean, structured design
-
-### Secondary User – Mark (Casual Traveller)
-- Wants a simple and quick way to track trips
-- Prefers minimal interaction and simplicity
-
-These personas guided the UI and feature decisions.
+| Name | Email | Password |
+|------|-------|----------|
+| Sarah Smith | sarah.smith@example.com | Password123! |
+| Mark Byrne | mark.byrne@example.com | Password123! |
 
 ---
 
-## 🚀 Features
+## Features
 
-### 🔐 User Authentication
+### Authentication
 - Register, login, logout
-- Each user has their own data
-- Authorisation ensures users only access their own trips
+- User-specific data
+- Secure authorisation
 
-### 🧳 Trips (Main CRUD Feature)
-- Create, view, edit, and delete trips
-- Fields include:
-  - Title
-  - Location
-  - Start & End dates
-  - Description
+### Trips
+- Full CRUD functionality
+- Title, location, dates, description
+- Cover images and best photo
 
-### 📍 Memories (Nested CRUD)
-- Add memories inside a trip
-- Each memory includes:
-  - Title
-  - Location
-  - Date
-  - Description
-- Full CRUD support for memories
+### Dashboard
+- Overview of trips
+- Quick actions
+- Trip statistics
 
-### 📊 Dashboard
-- Displays all user trips
-- Quick access to create, edit, and view trips
+### Profile
+- Upload and display profile picture
 
-### ✅ Validation
-- Server-side validation using Laravel
-- Error messages shown in forms
-
-### 🔒 Authorisation
-- Users can only access their own trips and memories
-- Implemented using `auth()->id()` checks and guards
+### UI / UX
+- Travel-themed design (sky, ocean, sunset tones)
+- Responsive layout with mobile navigation
+- Fullscreen carousel for trip images
 
 ---
 
-## 🧱 Technical Implementation
+## Feedback & Improvements
 
-### 🏗 Architecture
-- Laravel MVC structure
-  - Models: `Trip`, `Memory`, `User`
-  - Controllers: `TripController`, `MemoryController`
-  - Views: Blade templates
+The project was refined based on feedback from the previous assignment, focusing on improving usability, design, and functionality.
 
-### 🗄 Database
-- Relational database (SQLite/MySQL)
-- Migrations used for schema:
-  - users
-  - trips
-  - memories
+### Implemented
 
-### 🔗 Relationships
-- A **Trip has many Memories**
-- A **Memory belongs to a Trip**
-
-### 🧾 CRUD Implementation
-- Full CRUD for Trips (main feature)
-- Additional CRUD for Memories (extended feature)
+- Front page redesigned to match travel theme
+- Added logo and favicon
+- Carousel updated with fullscreen toggle
+- Profile photo upload and display added
+- Removed automatic scrolling behaviour
+- Updated UI from business style to travel-inspired design
+- Improved form spacing and label padding
+- Added footer with profile / LinkedIn links
 
 ---
 
-## 🖥 Pages Included
+### In Progress / Planned
 
-- Login / Register
-- Dashboard (Trip list)
-- Create Trip
-- Edit Trip
-- Trip Details
-- Memory List
-- Create Memory
-- Edit Memory
+- Improve fullscreen carousel UI/UX
+- Add demo GIF to GitHub README
+- Further improve README structure
+- Remove unnecessary memory feature
+- Add trip highlights (comma-separated tags)
+- Add best photo upload per trip
+- Add trip rating system (1–5 stars)
+- Add trip status (Planned / Ongoing / Finished)
+- Display trip summary data on cards
+- Sort trips by start date (newest first)
 
 ---
 
-## Setup Instructions
+## Tech Stack
 
-### 1. Clone the repository:
+| Category | Technologies |
+|----------|-------------|
+| Backend | Laravel 11, PHP |
+| Frontend | Blade, CSS, JavaScript |
+| Database | MySQL / SQLite |
+| Deployment | Microsoft Azure |
+| Version Control | Git, GitHub |
+
+---
+
+## Database Structure
+
+- Users
+- Trips
+
+Relationships:
+- User → has many Trips
+
+---
+
+## Project Structure
+app/
+├── Http/Controllers/
+├── Models/
+
+database/migrations/
+
+resources/views/
+├── layouts/
+├── trips/
+└── profile/
+
+public/css/
+
+routes/web.php
+
+
+---
+
+## Local Setup
+
+### Requirements
+- PHP ≥ 8.1
+- Composer
+- MySQL or SQLite
+
+### Installation
+
 ```bash
-   git clone <https://github.com/Kireoda/ServerSideCA2_TravelMemoryTracker.git>
-```
-### 2. Navigate into the project:
-```bash
-   cd travel-memory-tracker
-```
-### 3. Install dependencies:
-```bash
-   composer install
-```
-### 4. Copy environment file:
-```bash
-   cp .env.example .env
-```
-### 5. Generate application key:
-```bash
-   php artisan key:generate
-```
----
+git clone https://github.com/Kireoda/ServerSideCA2_TravelMemoryTracker.git
+cd ServerSideCA2_TravelMemoryTracker
 
-## How to Run the Project
+composer install
+cp .env.example .env
+php artisan key:generate
+Database
+php artisan migrate
+php artisan storage:link
+php artisan db:seed   # optional
+Run
+php artisan serve
 
-### 1. Start the Laravel server:
-```bash
-   php artisan serve
-```
-Frontend assets are prebuilt and stored in `public/build`, so no Node/Vite step is required.
-### 2. Open in browser:
-   http://127.0.0.1:8000
+Open:
 
----
-## Database Setup
+http://127.0.0.1:8000
+Azure Deployment
+Steps
+Created Azure App Service (PHP)
+Configured database connection
+Set environment variables
+Deployed via GitHub
+Configured storage for uploads
+Example Environment
+APP_DEBUG=false
+APP_URL=https://your-app.azurewebsites.net
 
-### 1. Configure your .env file (SQLite or MySQL)
+DB_HOST=your-db.mysql.database.azure.com
+DB_DATABASE=travel_memory_tracker
+DB_USERNAME=your-username
+DB_PASSWORD=your-password
+Limitations
+Some planned features not fully implemented
+No map integration
+No social features
+Future Improvements
+Google Maps integration
+Social login
+Public trip sharing
+Export trips as PDF
+Testing
 
-### 2. Run migrations:
-```bash
-   php artisan migrate
-```
-If you're adding cover images for trips, run this once to make storage public:
-```bash
-   php artisan storage:link
-```
-### 3. (Optional) Seed database:
-```bash
-   php artisan db:seed
-```
+Manual testing ensured:
 
-### 4. Demo accounts (seeded)
-- Sarah Smith — `sarah.smith@example.com`
-- Mark Byrne — `mark.byrne@example.com`
-- Default password for both: `Password123!`
----
-## ⚠️ Assumptions
+CRUD functionality
+Validation rules
+Authorisation
+Contributors
+Name	Role
+You	Development, Deployment, Improvements
+Kireoda	Initial development
+AI Tools
 
-- Each user manages only their own trips
-- Trips must have valid dates
-- Memories are always linked to a trip
+AI was used for:
 
----
+Debugging
+Code structure suggestions
+UI improvements
+Deployment troubleshooting
 
-## ❗ Limitations / Known Issues
+All code was reviewed and understood before use.
 
-- No image upload for memories (text-only)
-- Memory Story feature planned but not implemented
-- UI partially uses Tailwind (navigation) and custom CSS (main pages)
+License
 
----
+Educational project for university coursework (CA3).
 
-## 📌 Future Improvements
-
-- Memory Story / Trip Summary page
-- Image upload for memories
-- Trip status (Planned / Ongoing / Finished)
-- Favourite memories
-- Trip statistics (memory count, duration)
-- Google Maps integration for locations
 
 ---
-
-## 🔄 Version Control
-
-- Git used throughout development
-- Regular commits with meaningful messages
-- Demonstrates incremental feature development
-
----
-
-## 🤖 Use of AI Tools
-
-AI tools were used during development to:
-- Debug errors
-- Assist with structuring controllers and views
-- Improve UI styling
-
-All code was reviewed, understood, and adapted where necessary.
-
----
-
-## 🧪 Testing
-
-Manual testing was carried out to ensure:
-- CRUD operations function correctly
-- Validation rules are enforced
-- Authorisation prevents unauthorised access
-
----
-
-## 🎤 Oral Defence Preparation
-
-During the project defence, the following areas can be explained:
-- MVC structure and separation of concerns
-- CRUD implementation for Trips and Memories
-- Database relationships
-- Validation and security decisions
-- UX decisions based on user personas
-
----
-
-## 📄 License
-
-This project is developed for educational purposes as part of a university assignment.
