@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Travel Memory Tracker</title>
+        <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.jpg') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -13,6 +14,9 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link href="{{ asset('css/travel.css') }}" rel="stylesheet">
+        <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo.svg') }}">
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const burger = document.getElementById('hamburger');

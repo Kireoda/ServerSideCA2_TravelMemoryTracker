@@ -18,7 +18,7 @@
         <div class="auth-page">
             <div class="auth-card">
                 <a href="/" class="brand">
-                    <x-application-logo style="height: 40px; width: 40px;" />
+                    <img src="{{ asset('images/logo.jpg') }}" alt="Travel Memory Tracker" style="height: 40px; width: auto;">
                     Travel Memory Tracker
                 </a>
                 <div style="margin-top: 20px;">

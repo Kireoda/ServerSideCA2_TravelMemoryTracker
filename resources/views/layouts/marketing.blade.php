@@ -16,8 +16,8 @@
         <div class="marketing-shell">
             <header class="site-header">
                 <div class="header-inner">
-                    <a href="{{ route('home') }}" class="brand">
-                        <x-application-logo style="height: 34px; width: 34px;" />
+                    <a href="/" class="brand">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="Travel Memory Tracker" style="height: 40px; width: auto;">
                         Travel Memory Tracker
                     </a>
 

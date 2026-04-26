@@ -1,7 +1,8 @@
 <header class="site-header">
     <div class="header-inner">
         <a href="{{ route('dashboard') }}" class="brand">
-            Travel Memory Tracker
+                <img src="{{ asset('images/logo.jpg') }}" alt="Travel Memory Tracker" style="height: 40px; width: auto;">
+                Travel Memory Tracker
         </a>
 
         <nav class="main-nav">

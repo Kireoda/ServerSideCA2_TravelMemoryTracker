@@ -1,19 +1,24 @@
 :root {
-    --bg: #0b0f19;
-    --bg-deep: #0a1220;
-    --surface: #111827;
-    --surface-soft: #172554;
+    --bg: #e6f2ff;           /* sky */
+    --bg-deep: #cde7ff;      /* deeper sky */
+    --surface: #ffffff;
+    --surface-soft: #f0fdf4; /* light forest tint */
     --surface-card: #ffffff;
-    --surface-muted: #f4f6fb;
-    --text: #0f172a;
-    --text-invert: #f8fafc;
+    --surface-muted: #e6f8ff; /* sandy tone */
+
+    --text: #1e293b;
+    --text-invert: #000000;
     --muted: #64748b;
-    --brand: #2563eb;
-    --brand-strong: #1d4ed8;
-    --accent: #f97316;
-    --success: #16a34a;
-    --danger: #dc2626;
-    --shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+
+    --brand: #0ea5e9;        /* ocean blue */
+    --brand-strong: #0284c7;
+
+    --accent: #f59e0b;       /* sunset/orange */
+    --success: #22c55e;      /* nature green */
+    --danger: #ef4444;
+
+    --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
     --radius-xl: 22px;
     --radius-lg: 16px;
     --radius-md: 12px;
@@ -115,10 +120,11 @@
 
 body {
     margin: 0;
-    font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     color: var(--text);
-    background: radial-gradient(circle at top, rgba(99, 102, 241, 0.18), transparent 55%),
-        linear-gradient(180deg, #0b1224 0%, #0d1b33 45%, #111827 100%);
+
+    background:
+            linear-gradient(to bottom, #87ceeb 0%, #e0f2fe 40%, #cbedd1 100%);
     min-height: 100vh;
 }
 
@@ -126,9 +132,12 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.18), transparent 40%),
-        radial-gradient(circle at 80% 10%, rgba(244, 114, 182, 0.16), transparent 45%),
-        radial-gradient(circle at 70% 80%, rgba(34, 211, 238, 0.12), transparent 45%);
+
+    background:
+            radial-gradient(circle at 20% 30%, rgba(255,255,255,0.5), transparent 40%),
+            radial-gradient(circle at 80% 20%, rgba(56,189,248,0.2), transparent 50%),
+            radial-gradient(circle at 50% 90%, rgba(34,197,94,0.15), transparent 60%);
+
     pointer-events: none;
     z-index: -1;
 }
@@ -147,13 +156,10 @@ a:hover {
 }
 
 .site-header {
-    backdrop-filter: blur(16px);
-    background: rgba(15, 23, 42, 0.82);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-    color: var(--text-invert);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    color: var(--text);
 }
 
 .site-header .header-inner {
@@ -182,7 +188,7 @@ a:hover {
 }
 
 .nav-link {
-    color: rgba(248, 250, 252, 0.7);
+    color: rgb(0, 0, 0);
     font-weight: 600;
     padding: 6px 0;
     border-bottom: 2px solid transparent;
@@ -202,7 +208,7 @@ a:hover {
 
 .user-actions span {
     font-weight: 600;
-    color: rgba(248, 250, 252, 0.8);
+    color: rgb(0, 0, 0);
 }
 
 main {
@@ -212,10 +218,11 @@ main {
 }
 
 .page {
-    background: var(--surface-card);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: var(--radius-xl);
     padding: 32px;
     box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
 }
 
 .page--flush {
@@ -257,30 +264,22 @@ main {
 
 .button,
 button.button,
-a.button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    background: #2563eb;
-    color: #ffffff;
-    padding: 10px 16px;
-    border-radius: 12px;
-    border: 1px solid rgba(37, 99, 235, 0.25);
+a.button, .button-secondary{
+    background: linear-gradient(135deg, #0ea5e9, #22c55e);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 18px;
     font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.12);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover,
 button.button:hover,
-a.button:hover {
-    transform: translateY(-1px);
-    background: #1d4ed8;
-    border-color: rgba(29, 78, 216, 0.3);
-    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.16);
+a.button:hover, .button-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .button:focus,
@@ -296,18 +295,6 @@ a.button.button-sm {
     padding: 8px 12px;
     font-size: 13px;
     border-radius: 12px;
-}
-
-.button-secondary {
-    background: rgba(255, 255, 255, 0.86);
-    color: #0f172a;
-    border-color: rgba(148, 163, 184, 0.35);
-    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.1);
-}
-
-.button-secondary:hover {
-    background: #ffffff;
-    border-color: rgba(148, 163, 184, 0.55);
 }
 
 .button-danger {
@@ -798,10 +785,22 @@ textarea {
 
 .marketing-hero-lead {
     margin: 0;
-    color: rgba(248, 250, 252, 0.82);
+    color: rgb(0, 0, 0);
     font-size: 16px;
     line-height: 1.6;
     max-width: 56ch;
+}
+
+.marketing-nav {
+    display: none;
+}
+
+@media (max-width: 720px) {
+    .marketing-nav {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+    }
 }
 
 .marketing-hero-actions {
@@ -826,9 +825,38 @@ textarea {
     border-radius: 999px;
     font-size: 13px;
     font-weight: 600;
-    color: rgba(248, 250, 252, 0.88);
-    background: rgba(15, 23, 42, 0.55);
-    border: 1px solid rgba(148, 163, 184, 0.25);
+    background: rgba(255, 255, 255, 0.6);
+    color: #334155;
+    border: 1px solid rgba(0,0,0,0.05);
+    backdrop-filter: blur(6px);
+}
+
+.hero-image-wrap {
+    max-width: 1100px;
+    margin: 40px auto;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-image-wrap img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+/* soft overlay for readability + vibe */
+.hero-image-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+            180deg,
+            rgba(0,0,0,0.1),
+            rgba(0,0,0,0.35)
+    );
 }
 
 .marketing-collage {
@@ -1012,7 +1040,7 @@ textarea {
 }
 
 .marketing-footer {
-    color: rgba(248, 250, 252, 0.72);
+    color: rgb(0, 0, 0);
     padding: 38px 24px 48px;
 }
 
@@ -1026,7 +1054,7 @@ textarea {
 .marketing-footer-title {
     margin: 0;
     font-weight: 700;
-    color: rgba(248, 250, 252, 0.92);
+    color: rgb(0, 0, 0);
 }
 
 .marketing-footer-copy,
@@ -1057,6 +1085,41 @@ textarea {
     z-index: 3;
 }
 
+/* button position */
+.carousel-fullscreen {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+/* fullscreen mode */
+.trip-carousel.is-fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: black;
+    padding: 20px;
+}
+
+/* make slides fill screen */
+.trip-carousel.is-fullscreen .trip-card--hero .trip-card-media {
+    height: 80vh;
+}
+
+/* keep nav on top */
+.trip-carousel.is-fullscreen .trip-carousel-nav {
+    z-index: 10;
+}
+
 .carousel-nav {
     pointer-events: auto;
     width: 44px;
@@ -1064,7 +1127,7 @@ textarea {
     border-radius: 999px;
     border: 1px solid rgba(148, 163, 184, 0.28);
     background: rgba(2, 6, 23, 0.35);
-    color: rgba(248, 250, 252, 0.92);
+    color: rgb(203, 237, 209);
     font-size: 28px;
     font-weight: 800;
     cursor: pointer;

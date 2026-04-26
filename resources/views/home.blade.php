@@ -26,31 +26,8 @@
             </div>
         </div>
 
-        <div class="marketing-collage" aria-label="Trip photo collage">
-            <div class="marketing-collage-tile marketing-collage-tile--a">
-                <div class="marketing-collage-overlay">
-                    <span class="card-chip">Trip cover</span>
-                    <p class="marketing-collage-title">Barcelona</p>
-                </div>
-            </div>
-            <div class="marketing-collage-tile marketing-collage-tile--b">
-                <div class="marketing-collage-overlay">
-                    <span class="card-chip">Gallery</span>
-                    <p class="marketing-collage-title">Coast</p>
-                </div>
-            </div>
-            <div class="marketing-collage-tile marketing-collage-tile--c">
-                <div class="marketing-collage-overlay">
-                    <span class="card-chip">Details</span>
-                    <p class="marketing-collage-title">Street</p>
-                </div>
-            </div>
-            <div class="marketing-collage-tile marketing-collage-tile--d">
-                <div class="marketing-collage-overlay">
-                    <span class="card-chip">Highlights</span>
-                    <p class="marketing-collage-title">Sunset</p>
-                </div>
-            </div>
+        <div class="hero-image-wrap">
+            <img src="images/holidays.jpg" alt="Holidays">
         </div>
     </section>
 

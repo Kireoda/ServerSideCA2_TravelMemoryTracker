@@ -47,6 +47,10 @@
 
             @if(!empty($recentTrips) && $recentTrips->count())
                 <div class="trip-carousel" data-carousel>
+                    <button type="button" class="carousel-fullscreen" data-carousel-fullscreen>
+                        ⛶
+                    </button>
+
                     <div class="trip-carousel-nav" aria-label="Trip navigation">
                         <button type="button" class="carousel-nav" data-carousel-prev aria-label="Previous trip">‹</button>
                         <button type="button" class="carousel-nav" data-carousel-next aria-label="Next trip">›</button>
@@ -106,4 +110,22 @@
 @push('scripts')
     <script src="{{ asset('js/dashboard-slideshow.js') }}" defer></script>
     <script src="{{ asset('js/dashboard-carousel.js') }}" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-carousel-fullscreen]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const carousel = btn.closest('.trip-carousel');
+                    carousel.classList.toggle('is-fullscreen');
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.trip-carousel.is-fullscreen')
+                        .forEach(c => c.classList.remove('is-fullscreen'));
+                }
+            });
+        });
+    </script>
 @endpush

@@ -1,8 +1,8 @@
 # TODO List
 
 ## From Feedback
-- [ ] Make front page (before login) fit travel theme
-- [ ] Add logo
+- [ x ] Make front page (before login) fit travel theme
+- [ x ] Add logo
 - [ ] Make carousel fullscreen
 - [ ] Add profile photo (upload + display)
 - [ ] Remove quick slide/scroll from front page
