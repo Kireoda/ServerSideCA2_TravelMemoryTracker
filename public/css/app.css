@@ -234,6 +234,17 @@ main {
     padding: 26px 28px 30px;
 }
 
+.trip-filter {
+    margin-bottom: 16px;
+}
+
+.trip-filter select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: white;
+}
+
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -588,6 +599,38 @@ textarea {
 
 .form-stack {
     margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #334155;
+}
+
+.form-select {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+.form-select:hover {
+    border-color: #94a3b8;
 }
 
 .image-grid {
@@ -1066,6 +1109,24 @@ textarea {
     margin: 0;
 }
 
+.status-chip {
+    font-weight: 500;
+}
+
+.status-planned {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.status-ongoing {
+    background: #fef9c3;
+    color: #92400e;
+}
+
+.status-finished {
+    background: #dcfce7;
+    color: #166534;
+}
 .trip-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));

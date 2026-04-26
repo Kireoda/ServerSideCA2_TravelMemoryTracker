@@ -11,11 +11,19 @@ class TripController extends Controller
 {
     public function index()
     {
-        $trips = Trip::where('user_id', auth()->id())
+        $sort = request('sort', 'newest');
+
+        $query = Trip::where('user_id', auth()->id())
             ->with('images')
-            ->withCount(['images', 'memories'])
-            ->latest()
-            ->get();
+            ->withCount(['images', 'memories']);
+
+        if ($sort === 'oldest') {
+            $query->orderBy('start_date', 'asc');
+        } else {
+            $query->orderBy('start_date', 'desc');
+        }
+
+        $trips = $query->get();
 
         return view('trips.index', compact('trips'));
     }
@@ -36,6 +44,7 @@ class TripController extends Controller
             'cover_image' => ['nullable', 'image', 'max:10240'],
             'gallery_images' => ['nullable', 'array'],
             'gallery_images.*' => ['image', 'max:10240'],
+            'status' => ['required', 'in:Planned,Ongoing,Finished'],
         ]);
 
         $validated['user_id'] = auth()->id();
@@ -90,6 +99,7 @@ class TripController extends Controller
             'cover_choice' => ['nullable', 'string'],
             'gallery_images' => ['nullable', 'array'],
             'gallery_images.*' => ['image', 'max:10240'],
+            'status' => ['required', 'in:Planned,Ongoing,Finished'],
         ]);
 
         if ($request->hasFile('cover_image')) {

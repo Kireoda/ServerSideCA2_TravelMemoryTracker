@@ -41,6 +41,20 @@
 </div>
 
 <div>
+    <div class="form-group">
+        <label for="status" class="form-label">Trip Status</label>
+        <select name="status" id="status" class="form-select">
+            <option value="Planned" {{ old('status', $trip->status ?? 'Planned') == 'Planned' ? 'selected' : '' }}>Planned</option>
+            <option value="Ongoing" {{ old('status', $trip->status ?? '') == 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
+            <option value="Finished" {{ old('status', $trip->status ?? '') == 'Finished' ? 'selected' : '' }}>Finished</option>
+        </select>
+    </div>
+    @error('status')
+    <div class="error-text">{{ $message }}</div>
+    @enderror
+</div>
+
+<div>
     <label for="description">Description</label>
     <textarea name="description" id="description">{{ old('description', $trip->description ?? '') }}</textarea>
     @error('description')

@@ -19,7 +19,12 @@
         @php
             $palette = ['#60a5fa', '#34d399', '#f97316', '#f59e0b', '#a78bfa', '#f472b6', '#22d3ee'];
         @endphp
-
+        <form method="GET" class="trip-filter">
+            <select name="sort" onchange="this.form.submit()">
+                <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest trips</option>
+                <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest trips</option>
+            </select>
+        </form>
         @if($trips->count())
             <div class="trip-grid">
                 @foreach($trips as $index => $trip)
@@ -36,6 +41,9 @@
                             <div class="trip-card-media-inner">
                                 <div class="trip-card-chips">
                                     <span class="card-chip">Trip</span>
+                                    <span class="card-chip status-chip status-{{ strtolower($trip->status) }}">
+                                        {{ $trip->status }}
+                                    </span>
                                 </div>
                                 <h3>{{ $trip->title }}</h3>
                                 <p class="card-subtitle">{{ $trip->location }}</p>

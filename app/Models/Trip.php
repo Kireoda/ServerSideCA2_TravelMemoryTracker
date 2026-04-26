@@ -13,6 +13,7 @@ class Trip extends Model
         'end_date',
         'description',
         'cover_image',
+        'status',
         'user_id'
     ];
 

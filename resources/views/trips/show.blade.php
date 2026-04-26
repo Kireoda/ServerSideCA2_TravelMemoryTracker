@@ -22,6 +22,9 @@
                 <div class="trip-hero-body">
                     <div class="trip-hero-chips">
                         <span class="card-chip">Trip</span>
+                        <span class="card-chip status-chip status-{{ strtolower($trip->status) }}">
+                            {{ $trip->status }}
+                        </span>
                         <span class="trip-metric">{{ $trip->images->count() }} photos</span>
                         <span class="trip-metric">{{ $trip->memories->count() }} memories</span>
                     </div>
