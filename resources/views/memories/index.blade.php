@@ -4,10 +4,11 @@
     <section class="page">
         <header class="page-header">
             <div>
-                <p class="eyebrow">Trip memories</p>
+                <p class="eyebrow">Trip Images</p>
                 <h2>{{ $trip->title }}</h2>
             </div>
             <div class="header-actions">
+                <a href="{{ route('trips.memories.create', $trip) }}" class="button">Add Journal Entry</a>
                 <a href="{{ route('trips.show', $trip) }}" class="button button-secondary">Back to Trip</a>
             </div>
         </header>
@@ -24,13 +25,7 @@
                     <h3>Trip Gallery</h3>
                     <span class="memory-count">{{ $trip->images->count() }} photos</span>
                 </div>
-                <div class="image-grid">
-                    @foreach($trip->images as $image)
-                        <div class="image-tile">
-                            <img src="{{ asset('storage/' . $image->path) }}" alt="Trip photo">
-                        </div>
-                    @endforeach
-                </div>
+
             </section>
         @endif
 
@@ -47,7 +42,12 @@
                     <article class="gallery-card">
                         <a href="{{ route('trips.memories.show', [$trip, $memory]) }}" class="card-media" style="--tile-accent: {{ $accent }};">
                             <div class="card-media-inner">
-                                <span class="card-chip">Memory</span>
+                                @if($trip->images->count())
+                                    <img src="{{ asset('storage/' . $trip->images->first()->path) }}"
+                                         alt="{{ $memory->title }}"
+                                         style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                                @endif
+                                <span class="card-chip">Top Journal Entry</span>
                                 <h3>{{ $memory->title }}</h3>
                                 <p class="card-subtitle">{{ $memory->location ?: 'No location set' }}</p>
                             </div>
@@ -65,11 +65,12 @@
                     </article>
                 @endforeach
             </div>
-        @else
-            <div class="empty-state">
-                <h3>No memories generated yet</h3>
-                <p>Memories appear automatically based on your trip details.</p>
-            </div>
-        @endif
+            @else
+                <div class="empty-state">
+                    <h3>No Journal Entries yet</h3>
+                    <p>Create your first journal entry for this trip.</p>
+                    <a href="{{ route('trips.memories.create', $trip) }}" class="button">Add Journal Entry</a>
+                </div>
+            @endif
     </section>
 @endsection

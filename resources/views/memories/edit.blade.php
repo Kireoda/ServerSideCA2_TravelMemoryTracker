@@ -3,7 +3,7 @@
 @section('content')
     <section class="page">
         <header class="page-header">
-            <h2>Edit Memory</h2>
+            <h2>Edit Journal Entry</h2>
             <a href="{{ route('trips.memories.index', $trip) }}" class="button button-secondary">Back</a>
         </header>
 

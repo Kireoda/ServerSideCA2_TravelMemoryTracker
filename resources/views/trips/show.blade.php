@@ -45,24 +45,20 @@
 
             <section class="detail-panel">
                 <div class="panel-header">
-                    <h3>Memories</h3>
+                    <h3>Journal Entries</h3>
                     <span class="memory-count">{{ $trip->memories->count() }} total</span>
                 </div>
                 <div class="panel-actions">
-                    <a href="{{ route('trips.memories.index', $trip) }}" class="button">View Memories</a>
+                    <a href="{{ route('trips.memories.index', $trip) }}" class="button">View Journal Entries</a>
                 </div>
 
                 @if($trip->memories->count())
                     <div class="memory-slider" data-memory-slider>
-                        <div class="memory-slider-controls">
-                            <button type="button" class="button button-secondary" data-memory-prev>Prev</button>
-                            <button type="button" class="button button-secondary" data-memory-next>Next</button>
-                        </div>
 
                         <div class="memory-slides" aria-live="polite">
                             @foreach($trip->memories as $memory)
                                 <article class="memory-slide" data-memory-slide hidden>
-                                    <p class="eyebrow">Generated memory</p>
+                                    <p class="eyebrow">Journal Entries</p>
                                     <h4>{{ $memory->title }}</h4>
                                     <p class="meta-line">
                                         {{ $memory->date ?: 'No date yet' }}
@@ -88,8 +84,8 @@
                     </div>
                 @else
                     <div class="empty-state">
-                        <h3>No memories yet</h3>
-                        <p>Memories appear automatically based on your trip details.</p>
+                        <h3>No journal entries yet</h3>
+                        <p>Journal entries appear automatically based on your trip details.</p>
                     </div>
                 @endif
             </section>

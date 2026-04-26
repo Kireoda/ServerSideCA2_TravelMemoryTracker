@@ -4,6 +4,11 @@
     <section class="page">
         <header class="detail-hero">
             <div class="detail-hero-media">
+                @if($trip->images->count())
+                    <img src="{{ asset('storage/' . $trip->images->first()->path) }}"
+                         alt="{{ $memory->title }}"
+                         class="detail-hero-image">
+                @endif
                 <span class="card-chip">Memory</span>
             </div>
             <div class="detail-hero-body">
@@ -12,7 +17,8 @@
                 <p class="detail-location">{{ $memory->location ?: 'No location set' }}</p>
                 <p class="detail-dates">{{ $memory->date ?: 'No date yet' }}</p>
                 <div class="detail-actions">
-                    <a href="{{ route('trips.memories.index', $trip) }}" class="button button-secondary">Back to Memories</a>
+                    <a href="{{ route('trips.memories.index', $trip) }}" class="button button-secondary">Back to Journal Entries</a>
+                    <a href="{{ route('trips.memories.edit', [$trip, $memory]) }}" class="button">Edit Memory</a>
                     <x-like-button :trip="$trip" :memory="$memory" />
                 </div>
             </div>
@@ -29,13 +35,7 @@
                     <h3>Trip Gallery</h3>
                     <span class="memory-count">{{ $trip->images->count() }} photos</span>
                 </div>
-                <div class="image-grid">
-                    @foreach($trip->images as $image)
-                        <div class="image-tile">
-                            <img src="{{ asset('storage/' . $image->path) }}" alt="Trip photo">
-                        </div>
-                    @endforeach
-                </div>
+               
             </article>
         @endif
     </section>

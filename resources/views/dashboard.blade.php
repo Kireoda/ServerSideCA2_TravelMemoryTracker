@@ -30,7 +30,7 @@
                 <p class="stat-value">{{ $photoCount ?? 0 }}</p>
             </article>
             <article class="stat-card">
-                <p class="stat-label">Liked memories</p>
+                <p class="stat-label">Liked Journal Entries</p>
                 <p class="stat-value">{{ $likedCount ?? 0 }}</p>
             </article>
         </section>

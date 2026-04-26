@@ -44,7 +44,7 @@ Route::get('/logout', function (Request $request) {
 
 Route::middleware('auth')->group(function () {
     Route::resource('trips', TripController::class);
-    Route::resource('trips.memories', MemoryController::class)->only(['index', 'show']);
+    Route::resource('trips.memories', MemoryController::class);
     Route::post('trips/{trip}/memories/{memory}/like', [MemoryController::class, 'toggleLike'])->name('trips.memories.like');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
