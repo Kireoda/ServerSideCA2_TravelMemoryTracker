@@ -5,11 +5,23 @@
     const triggers = () => Array.from(document.querySelectorAll('[data-lightbox-item]'));
     const image = lightbox.querySelector('[data-lightbox-image]');
     const closeButton = lightbox.querySelector('[data-lightbox-close]');
+    const fullscreenButton = lightbox.querySelector('[data-lightbox-fullscreen]');
     const nextButton = lightbox.querySelector('[data-lightbox-next]');
     const prevButton = lightbox.querySelector('[data-lightbox-prev]');
     const counter = lightbox.querySelector('[data-lightbox-counter]');
+    const fullscreenTarget = lightbox.querySelector('.lightbox-dialog');
 
     let currentIndex = 0;
+
+    const isFullscreenActive = () => document.fullscreenElement === fullscreenTarget;
+
+    const updateFullscreenButton = () => {
+        if (!fullscreenButton) return;
+
+        const active = isFullscreenActive();
+        fullscreenButton.textContent = active ? 'Exit full screen' : 'Full screen';
+        fullscreenButton.setAttribute('aria-pressed', active ? 'true' : 'false');
+    };
 
     const setOpen = (isOpen) => {
         lightbox.hidden = !isOpen;
@@ -43,6 +55,9 @@
     };
 
     const close = () => {
+        if (isFullscreenActive()) {
+            document.exitFullscreen?.();
+        }
         setOpen(false);
         image.removeAttribute('src');
     };
@@ -62,6 +77,19 @@
         close();
     });
 
+    fullscreenButton?.addEventListener('click', async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (!fullscreenTarget?.requestFullscreen) return;
+
+        if (isFullscreenActive()) {
+            await document.exitFullscreen?.();
+        } else {
+            await fullscreenTarget.requestFullscreen();
+        }
+    });
+
     nextButton?.addEventListener('click', () => setIndex(currentIndex + 1));
     prevButton?.addEventListener('click', () => setIndex(currentIndex - 1));
 
@@ -76,6 +104,12 @@
         if (event.key === 'ArrowLeft') setIndex(currentIndex - 1);
     });
 
-    setOpen(false);
-})();
+    document.addEventListener('fullscreenchange', updateFullscreenButton);
 
+    if (fullscreenButton && !fullscreenTarget?.requestFullscreen) {
+        fullscreenButton.hidden = true;
+    }
+
+    setOpen(false);
+    updateFullscreenButton();
+})();

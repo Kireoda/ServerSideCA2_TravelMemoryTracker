@@ -1571,6 +1571,13 @@ textarea {
     color: rgba(248, 250, 252, 0.86);
 }
 
+.lightbox-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 .lightbox-counter {
     font-weight: 700;
     font-size: 13px;

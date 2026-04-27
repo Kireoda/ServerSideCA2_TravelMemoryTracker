@@ -52,7 +52,12 @@
             <div class="lightbox-dialog" role="dialog" aria-label="Photo viewer">
                 <div class="lightbox-toolbar">
                     <span class="lightbox-counter" data-lightbox-counter></span>
-                    <button type="button" class="button button-secondary" data-lightbox-close>Close</button>
+                    <div class="lightbox-actions">
+                        <button type="button" class="button button-secondary" data-lightbox-fullscreen aria-pressed="false">
+                            Full screen
+                        </button>
+                        <button type="button" class="button button-secondary" data-lightbox-close>Close</button>
+                    </div>
                 </div>
                 <div class="lightbox-stage">
                     <button type="button" class="lightbox-nav" data-lightbox-prev aria-label="Previous photo">‹</button>
