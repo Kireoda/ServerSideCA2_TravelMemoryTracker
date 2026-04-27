@@ -17,10 +17,10 @@
 
 
 ## From CA3 Project Description
-- [ ] Deploy Laravel app to Microsoft Azure
-- [ ] Make app accessible via public URL
-- [ ] Connect to database on Azure
-- [ ] Ensure no critical errors on live site
+- [ x ] Deploy Laravel app to Microsoft Azure
+- [ x ] Make app accessible via public URL
+- [ x ] Connect to database on Azure
+- [ x ] Ensure no critical errors on live site
 - [ ] Add live URL to README.md
 - [ ] Prepare verbal reflection (deployment process, challenges, solutions)
 - [ ] Show consistent git commits over time
