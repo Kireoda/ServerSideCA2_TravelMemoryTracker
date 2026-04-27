@@ -1,13 +1,12 @@
+# Travel Memory Tracker
+
+> **Live URL:** https://travelmemorytracker-ana-c3fnhrd9bzhnbmgc.polandcentral-01.azurewebsites.net/
+
 <p align="center">
   <img src="public/images/gif.gif" width="700" alt="Travel Memory Tracker demo GIF">
 </p>
 
 ---
-
-# Travel Memory Tracker
-
-> **Live URL:** https://travelmemorytracker-ana-c3fnhrd9bzhnbmgc.polandcentral-01.azurewebsites.net/
-
 ## Overview
 
 Travel Memory Tracker is a Laravel web application that allows users to organise and revisit travel experiences in one place.
