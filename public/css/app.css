@@ -1168,29 +1168,72 @@ textarea {
     cursor: pointer;
 }
 
+.trip-carousel.is-fullscreen .carousel-fullscreen,
+.trip-carousel:fullscreen .carousel-fullscreen {
+    top: 24px;
+    right: 24px;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    font-size: 28px;
+    background: rgba(2, 6, 23, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
 /* fullscreen mode */
 .trip-carousel.is-fullscreen {
     position: fixed;
     inset: 0;
     z-index: 9999;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 35%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+}
 
-    background: black;
-    padding: 20px;
+.trip-carousel:fullscreen {
+    max-width: none;
+    max-height: none;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 35%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
 }
 
 /* make slides fill screen */
 .trip-carousel.is-fullscreen .trip-card--hero .trip-card-media {
-    height: 80vh;
+    min-height: 0;
+    height: min(82vh, 980px);
+}
+
+.trip-carousel:fullscreen .trip-card--hero .trip-card-media {
+    min-height: 0;
+    height: min(82vh, 980px);
 }
 
 /* keep nav on top */
 .trip-carousel.is-fullscreen .trip-carousel-nav {
     z-index: 10;
 }
+.trip-carousel:fullscreen .trip-carousel-nav {
+    z-index: 10;
+}
 .trip-carousel.is-fullscreen .trip-card--hero {
     height: 100%;
 }
+.trip-carousel:fullscreen .trip-card--hero {
+    height: 100%;
+}
 .trip-carousel.is-fullscreen .trip-card-media {
+    height: 100%;
+    aspect-ratio: unset;
+}
+.trip-carousel:fullscreen .trip-card-media {
     height: 100%;
     aspect-ratio: unset;
 }
@@ -1199,9 +1242,69 @@ textarea {
     height: 100%;
     object-fit: cover;
 }
+.trip-carousel:fullscreen .trip-card-media-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .trip-carousel.is-fullscreen .trip-carousel-track {
     height: 100%;
     align-items: stretch;
+}
+.trip-carousel:fullscreen .trip-carousel-track {
+    height: 100%;
+    align-items: stretch;
+}
+
+.trip-carousel.is-fullscreen .trip-carousel-track,
+.trip-carousel:fullscreen .trip-carousel-track {
+    padding: 0;
+}
+
+.trip-carousel.is-fullscreen .trip-card,
+.trip-carousel:fullscreen .trip-card {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: clamp(24px, 3vw, 40px);
+    display: grid;
+    place-items: center;
+}
+
+.trip-carousel.is-fullscreen .trip-card-media,
+.trip-carousel:fullscreen .trip-card-media {
+    width: min(92vw, 1400px);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+}
+
+.trip-carousel.is-fullscreen .trip-card-media::before,
+.trip-carousel:fullscreen .trip-card-media::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 36px;
+    pointer-events: none;
+}
+
+.trip-carousel.is-fullscreen .trip-card-media-inner,
+.trip-carousel:fullscreen .trip-card-media-inner {
+    padding: clamp(24px, 4vw, 44px);
+}
+
+.trip-carousel.is-fullscreen .trip-card-media-inner h3,
+.trip-carousel:fullscreen .trip-card-media-inner h3 {
+    font-size: clamp(32px, 4vw, 56px);
+}
+
+.trip-carousel.is-fullscreen .card-subtitle,
+.trip-carousel.is-fullscreen .trip-card-dates,
+.trip-carousel:fullscreen .card-subtitle,
+.trip-carousel:fullscreen .trip-card-dates {
+    font-size: clamp(16px, 1.5vw, 20px);
 }
 
 
@@ -1217,6 +1320,14 @@ textarea {
     font-weight: 800;
     cursor: pointer;
     transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.trip-carousel.is-fullscreen .carousel-nav,
+.trip-carousel:fullscreen .carousel-nav {
+    width: 62px;
+    height: 62px;
+    background: rgba(2, 6, 23, 0.55);
+    border-color: rgba(255, 255, 255, 0.18);
 }
 
 .carousel-nav:hover {
