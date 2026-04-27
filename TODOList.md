@@ -21,6 +21,6 @@
 - [ x ] Make app accessible via public URL
 - [ x ] Connect to database on Azure
 - [ x ] Ensure no critical errors on live site
-- [ ] Add live URL to README.md
+- [ x ] Add live URL to README.md
 - [ ] Prepare verbal reflection (deployment process, challenges, solutions)
 - [ ] Show consistent git commits over time
