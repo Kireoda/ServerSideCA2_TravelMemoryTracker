@@ -23,6 +23,7 @@
 
         const img = link.querySelector('.trip-card-media-photo');
         if (!img) return null;
+        const autoPlay = link.getAttribute('data-dashboard-slideshow-autoplay') === 'true';
 
         let index = 0;
         let timer = null;
@@ -116,12 +117,20 @@
             timer = null;
         };
 
-        link.addEventListener('mouseenter', start);
-        link.addEventListener('mouseleave', stop);
-        link.addEventListener('focusin', start);
-        link.addEventListener('focusout', stop);
+        link.addEventListener('mouseenter', () => {
+            if (!autoPlay) start();
+        });
+        link.addEventListener('mouseleave', () => {
+            if (!autoPlay) stop();
+        });
+        link.addEventListener('focusin', () => {
+            if (!autoPlay) start();
+        });
+        link.addEventListener('focusout', () => {
+            if (!autoPlay) stop();
+        });
 
-        return { start, stop };
+        return { start, stop, autoPlay };
     };
 
     const controllers = items
@@ -135,8 +144,11 @@
                     const match = controllers.find((c) => c.link === entry.target);
                     if (!match) return;
 
-                    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) match.controller.start();
-                    else match.controller.stop();
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                        if (match.controller.autoPlay) match.controller.start();
+                    } else {
+                        match.controller.stop();
+                    }
                 });
             },
             { threshold: [0, 0.6, 1] }
@@ -144,6 +156,8 @@
 
         controllers.forEach(({ link }) => observer.observe(link));
     } else {
-        controllers[0]?.controller.start();
+        controllers
+            .filter(({ controller }) => controller.autoPlay)
+            .forEach(({ controller }) => controller.start());
     }
 })();
