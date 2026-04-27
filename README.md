@@ -1,16 +1,12 @@
-# Travel Memory Tracker
-
-> **Live URL:** https://travelmemorytracker-ana-c3fnhrd9bzhnbmgc.polandcentral-01.azurewebsites.net/
-
----
-
-## Demo
-not working need to fix
 <p align="center">
-  <img src="images/gif.gif" width="700">
+  <img src="public/images/gif.gif" width="700" alt="Travel Memory Tracker demo GIF">
 </p>
 
 ---
+
+# Travel Memory Tracker
+
+> **Live URL:** https://travelmemorytracker-ana-c3fnhrd9bzhnbmgc.polandcentral-01.azurewebsites.net/
 
 ## Overview
 

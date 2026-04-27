@@ -5,8 +5,8 @@
     const reducedMotion =
         window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const INTERVAL_MS = 3200;
-    const FADE_MS = 520;
+    const INTERVAL_MS = 4300;
+    const FADE_MS = 900;
 
     const createController = (link) => {
         const raw = link.getAttribute('data-dashboard-slideshow');

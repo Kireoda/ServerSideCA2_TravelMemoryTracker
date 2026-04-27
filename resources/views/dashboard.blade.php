@@ -38,7 +38,12 @@
         <section class="dashboard-section">
             <header class="dashboard-section-header">
                 <h3>Picture Frame Slideshow</h3>
-                <a href="{{ route('trips.index') }}" class="button button-secondary">All trips</a>
+                <div class="dashboard-section-actions">
+                    <button type="button" class="button slideshow-launch" data-carousel-fullscreen>
+                        Play Slideshow
+                    </button>
+                    <a href="{{ route('trips.index') }}" class="button button-secondary">All trips</a>
+                </div>
             </header>
 
             @php
@@ -46,49 +51,55 @@
             @endphp
 
             @if(!empty($recentTrips) && $recentTrips->count())
-                @php
-                    $trip = $recentTrips->first();
-                    $accent = $palette[$trip->id % count($palette)];
-                    $coverUrl = $trip->coverImageUrl;
-                    $slideshowImages = collect($trip->images)
-                        ->map(fn ($image) => asset('storage/' . $image->path))
-                        ->prepend($coverUrl)
-                        ->filter()
-                        ->unique()
-                        ->values();
-                @endphp
-
                 <div class="trip-carousel" data-carousel>
-                    <button type="button" class="carousel-fullscreen" data-carousel-fullscreen>
-                        ⛶
+                    <button type="button" class="carousel-close" data-carousel-close aria-label="Close slideshow">
+                        ×
                     </button>
 
+                    <div class="trip-carousel-nav" aria-label="Trip navigation">
+                        <button type="button" class="carousel-nav" data-carousel-prev aria-label="Previous trip">‹</button>
+                        <button type="button" class="carousel-nav" data-carousel-next aria-label="Next trip">›</button>
+                    </div>
+
                     <div class="trip-carousel-track" data-carousel-track tabindex="0" aria-label="Picture frame slideshow">
-                        <article class="trip-card trip-card--hero">
-                            <a href="{{ route('trips.show', $trip) }}"
-                               class="trip-card-media trip-card-media--slideshow"
-                               @if($slideshowImages->count() > 1) data-dashboard-slideshow='@json($slideshowImages)' @endif
-                               data-dashboard-slideshow-autoplay="true"
-                               style="--tile-accent: {{ $accent }}; @if($coverUrl) --cover-image: url('{{ $coverUrl }}'); @endif">
-                                @if($slideshowImages->count())
-                                    <img class="trip-card-media-photo" src="{{ $slideshowImages->first() }}" alt="" loading="lazy">
-                                @endif
-                                <div class="trip-card-media-inner">
-                                    <div class="trip-card-chips">
-                                        <span class="card-chip">Trip</span>
-                                        <span class="trip-metric">{{ $trip->images_count }} photos</span>
-                                        <span class="trip-metric">{{ $trip->memories_count }} memories</span>
+                        @foreach($recentTrips as $trip)
+                            @php
+                                $accent = $palette[$trip->id % count($palette)];
+                                $coverUrl = $trip->coverImageUrl;
+                                $slideshowImages = collect($trip->images)
+                                    ->map(fn ($image) => asset('storage/' . $image->path))
+                                    ->prepend($coverUrl)
+                                    ->filter()
+                                    ->unique()
+                                    ->values();
+                            @endphp
+
+                            <article class="trip-card trip-card--hero">
+                                <a href="{{ route('trips.show', $trip) }}"
+                                   class="trip-card-media trip-card-media--slideshow"
+                                   @if($slideshowImages->count() > 1) data-dashboard-slideshow='@json($slideshowImages)' @endif
+                                   data-dashboard-slideshow-autoplay="true"
+                                   style="--tile-accent: {{ $accent }}; @if($coverUrl) --cover-image: url('{{ $coverUrl }}'); @endif">
+                                    @if($slideshowImages->count())
+                                        <img class="trip-card-media-photo" src="{{ $slideshowImages->first() }}" alt="" loading="lazy">
+                                    @endif
+                                    <div class="trip-card-media-inner">
+                                        <div class="trip-card-chips">
+                                            <span class="card-chip">Trip</span>
+                                            <span class="trip-metric">{{ $trip->images_count }} photos</span>
+                                            <span class="trip-metric">{{ $trip->memories_count }} memories</span>
+                                        </div>
+                                        <h3>{{ $trip->title }}</h3>
+                                        <p class="card-subtitle">{{ $trip->location }}</p>
+                                        <p class="trip-card-dates">
+                                            {{ $trip->start_date }}
+                                            <span class="meta-divider">to</span>
+                                            {{ $trip->end_date ?? 'Ongoing' }}
+                                        </p>
                                     </div>
-                                    <h3>{{ $trip->title }}</h3>
-                                    <p class="card-subtitle">{{ $trip->location }}</p>
-                                    <p class="trip-card-dates">
-                                        {{ $trip->start_date }}
-                                        <span class="meta-divider">to</span>
-                                        {{ $trip->end_date ?? 'Ongoing' }}
-                                    </p>
-                                </div>
-                            </a>
-                        </article>
+                                </a>
+                            </article>
+                        @endforeach
                     </div>
                 </div>
             @else
