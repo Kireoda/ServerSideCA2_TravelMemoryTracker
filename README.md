@@ -3,7 +3,7 @@
 > **Live URL:** https://travelmemorytracker-ana-c3fnhrd9bzhnbmgc.polandcentral-01.azurewebsites.net/
 
 <p align="center">
-  <img src="public/images/gif.gif" width="700" alt="Travel Memory Tracker demo GIF">
+  <img src="public/images/ScreenRecording2026-04-27at19.14.19-ezgif.com-video-to-gif-converter.gif" width="700" alt="Travel Memory Tracker demo GIF">
 </p>
 
 ---
