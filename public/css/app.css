@@ -1561,6 +1561,17 @@ textarea {
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
 }
 
+.lightbox-dialog:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+    border: 0;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background: #020617;
+}
+
 .lightbox-toolbar {
     display: flex;
     align-items: center;
@@ -1592,12 +1603,22 @@ textarea {
     padding: 12px;
 }
 
+.lightbox-dialog:fullscreen .lightbox-stage {
+    height: 100%;
+    padding: 20px;
+}
+
 .lightbox-image {
     width: 100%;
     max-height: 74vh;
     object-fit: contain;
     border-radius: 16px;
     background: rgba(15, 23, 42, 0.8);
+}
+
+.lightbox-dialog:fullscreen .lightbox-image {
+    max-height: calc(100vh - 110px);
+    border-radius: 20px;
 }
 
 .lightbox-nav {
